@@ -226,7 +226,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-            isWalking = !Input.GetKey(KeyCode.LeftShift);
+            isWalking = !Input.GetButton("Sprint");
 #endif
             // set the desired speed to be walking or running
             speed = isWalking ? walkSpeed : runSpeed;

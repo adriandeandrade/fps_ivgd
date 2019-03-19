@@ -68,6 +68,23 @@ ModelImporter:
     100124: thumb_03_r_end
     100126: upperarm_l
     100128: upperarm_r
+    100130: M4_Carbine
+    100132: arms
+    100134: arms_rig
+    100136: bolt
+    100138: bolt_end
+    100140: ElbowPT.l
+    100142: ElbowPT.l_end
+    100144: ElbowPT.r
+    100146: ElbowPT.r_end
+    100148: M4A1
+    100150: m4a1_bolt
+    100152: m4a1_mag
+    100154: magazine
+    100156: magazine_end
+    100158: Main
+    100160: Main_end
+    100162: Armature
     400000: __index_01_l
     400002: __index_01_r
     400004: __middle_01_l
@@ -133,14 +150,55 @@ ModelImporter:
     400124: thumb_03_r_end
     400126: upperarm_l
     400128: upperarm_r
+    400130: M4_Carbine
+    400132: arms
+    400134: arms_rig
+    400136: bolt
+    400138: bolt_end
+    400140: ElbowPT.l
+    400142: ElbowPT.l_end
+    400144: ElbowPT.r
+    400146: ElbowPT.r_end
+    400148: M4A1
+    400150: m4a1_bolt
+    400152: m4a1_mag
+    400154: magazine
+    400156: magazine_end
+    400158: Main
+    400160: Main_end
+    400162: Armature
     2100000: mat_arms
+    2100002: M4_Carbine
+    2100004: M4A1_mat.002
+    2300000: M4_Carbine
+    2300002: M4A1
+    2300004: m4a1_bolt
+    2300006: m4a1_mag
+    3300000: M4_Carbine
+    3300002: M4A1
+    3300004: m4a1_bolt
+    3300006: m4a1_mag
     4300000: man2.001
+    4300002: M4_Carbine
+    4300004: m4a1_mag
+    4300006: m4a1_bolt
+    4300008: M4A1
+    4300010: arms
     7400000: arms_fists_idle
     7400002: man2|arm_fists_idle.001
     7400004: arms_fists_wield
+    7400006: arm_m4_idle
+    7400008: m4
     9500000: //RootNode
     13700000: man2.001
+    13700002: arms
+    2186277476908879412: ImportLogs
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4A1_mat.002
+    second: {fileID: 2100000, guid: 4fc6468e0d6cae94e9104b6721540f8e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -174,10 +232,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: arms_fists_wield
-      takeName: man2|arm_wield_fists
+      name: m4
+      takeName: Armature|Action
       firstFrame: 0
-      lastFrame: 9
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -186,34 +244,6 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: arms_fists_idle
-      takeName: man2|arm_fists_idle
-      firstFrame: 0
-      lastFrame: 39
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
