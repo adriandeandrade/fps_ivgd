@@ -4820,6 +4820,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2031471427}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2043013281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8382341323845278986, guid: 9f0d2c88a7360824ea61c559391a9243,
+    type: 3}
+  m_PrefabInstance: {fileID: 3478619893005800400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2043013284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043013281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcc4b3c78403764d9ceca5ac3e2b159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 0380910ecb3eae74fa8b4f7d4d64c2f1, type: 2}
+  debugItem: {fileID: 4719370641775357484, guid: bfb2a031d79b572429bc205adac170f3,
+    type: 3}
 --- !u!1001 &2046054685
 PrefabInstance:
   m_ObjectHideFlags: 0
