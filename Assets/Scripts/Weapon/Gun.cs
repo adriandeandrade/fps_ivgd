@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private GunData gunData;
     [SerializeField] private GameObject debugItem;
+    [SerializeField] private LayerMask ignoreMask;
 
     int bulletsLeft;
     int shotsRemainingInBurst;
@@ -16,10 +17,14 @@ public class Gun : MonoBehaviour
 
     Camera cam;
     FireTypes fireType;
+    Animator animator;
+    Animator arms;
 
     private void Awake()
     {
         cam = Camera.main;
+        animator = GetComponent<Animator>();
+        arms = GameObject.FindGameObjectWithTag("Arms").GetComponent<Animator>();
     }
 
     private void Start()
@@ -54,6 +59,9 @@ public class Gun : MonoBehaviour
                     return;
                 }
             }
+
+            animator.SetTrigger("Shoot");
+            arms.SetTrigger("Shoot");
 
             ShootRay();
             bulletsLeft--;
@@ -93,10 +101,9 @@ public class Gun : MonoBehaviour
     private void ShootRay()
     {
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gunData.fireRange))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gunData.fireRange, ignoreMask))
         {
             Instantiate(debugItem, hit.point, Quaternion.identity);
-            Debug.Log("Fire Weapon");
         }
     }
 
