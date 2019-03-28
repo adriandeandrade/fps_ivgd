@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7374db3a2319604ab8177c995bff809, type: 3}
-  m_Name: M4A1
+  m_Name: M1911
   m_EditorClassIdentifier: 
-  fireType: 2
-  magazineCapacity: 30
-  burstCount: 3
-  fireRate: 0.2
+  fireType: 1
+  magazineCapacity: 9
+  burstCount: 0
+  fireRate: 0.1
   fireRange: 300
-  reloadTime: 1
-  gunName: M4A1
+  reloadTime: 0.4
+  gunName: Colt M1911

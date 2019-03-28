@@ -7,36 +7,108 @@ public class Gun : MonoBehaviour
     [SerializeField] private GunData gunData;
     [SerializeField] private GameObject debugItem;
 
-    float bulletsLeft;
+    int bulletsLeft;
+    int shotsRemainingInBurst;
     float nextFireTime;
 
+    bool isReloading;
+    bool triggerReleasedSinceLastShot;
+
     Camera cam;
+    FireTypes fireType;
 
     private void Awake()
     {
         cam = Camera.main;
     }
 
-    private void Update()
+    private void Start()
     {
-        if(Input.GetButtonDown("Fire1"))
+        fireType = gunData.fireType;
+    }
+
+    private void LateUpdate()
+    {
+        if(!isReloading && bulletsLeft == 0)
         {
-            Shoot();
+            Reload();
         }
     }
 
     private void Shoot()
     {
-        if (Time.time > nextFireTime)
+        if (!isReloading && Time.time > nextFireTime && bulletsLeft > 0)
         {
-            RaycastHit hit;
-            if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gunData.fireRange))
+            if (fireType == FireTypes.BURST)
             {
-                Instantiate(debugItem, hit.point, Quaternion.identity);
-                Debug.Log("Fire Weapon");
+                if (shotsRemainingInBurst == 0)
+                {
+                    return;
+                }
+                shotsRemainingInBurst--;
+            }
+            else if (fireType == FireTypes.SINGLE)
+            {
+                if (!triggerReleasedSinceLastShot)
+                {
+                    return;
+                }
             }
 
+            ShootRay();
+            bulletsLeft--;
             nextFireTime = Time.time + gunData.fireRate;
         }
+    }
+
+    public void Reload()
+    {
+        if(!isReloading && bulletsLeft != gunData.magazineCapacity)
+        {
+            StartCoroutine(AnimateReload());
+        }
+    }
+
+    IEnumerator AnimateReload()
+    {
+        Debug.Log("Reloading...");
+
+        isReloading = true;
+        yield return new WaitForSeconds(0.2f);
+
+        float reloadSpeed = 1f / gunData.reloadTime;
+        float percent = 0;
+
+        while(percent < 1)
+        {
+            percent += Time.deltaTime * reloadSpeed;
+            yield return null;
+        }
+
+        isReloading = false;
+        bulletsLeft = gunData.magazineCapacity;
+        Debug.Log("Finished Reloading!");
+    }
+
+    private void ShootRay()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gunData.fireRange))
+        {
+            Instantiate(debugItem, hit.point, Quaternion.identity);
+            Debug.Log("Fire Weapon");
+        }
+    }
+
+    public void OnTriggerHold()
+    {
+        Shoot();
+        triggerReleasedSinceLastShot = false;
+    }
+
+    public void OnTriggerReleased()
+    {
+        triggerReleasedSinceLastShot = true;
+        shotsRemainingInBurst = gunData.burstCount;
     }
 }

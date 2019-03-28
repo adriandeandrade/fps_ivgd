@@ -24,6 +24,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float gravityModifier;
 
         [Header("Components")]
+        [SerializeField] private Animator animator;
         [SerializeField] private MouseLook mouseLook;
         [SerializeField] private FOVKick fovKick = new FOVKick();
         [SerializeField] private CurveControlledBob headBob = new CurveControlledBob();
@@ -31,6 +32,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] footStepSound;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip jumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip landSound;           // the sound played when character touches back on ground.
+
+        [Header("Animation")]
+        [SerializeField] private float startAnimTime = 0.3f;
+        [SerializeField] private float stopAnimTime = 0.15f;
 
         Vector3 originalCameraPosition;
         Vector2 input;
@@ -49,6 +54,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         CinemachineBrain cinemachineBrain;
         CollisionFlags collisionFlags;
         AudioSource audioSource;
+        
 
         private void Awake()
         {
@@ -217,6 +223,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void GetInput(out float speed)
         {
+            InputMagnitude();
+
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");
@@ -244,6 +252,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 StopAllCoroutines();
                 StartCoroutine(!isWalking ? fovKick.FOVKickUp() : fovKick.FOVKickDown());
+            }
+        }
+
+        private void InputMagnitude()
+        {
+            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+
+            float speed = new Vector2(horizontal, vertical).sqrMagnitude;
+
+            if(speed > 0.01f)
+            {
+                animator.SetFloat("InputMagnitude", speed, startAnimTime, Time.deltaTime);
+            } else if(speed < 0.01f)
+            {
+                animator.SetFloat("InputMagnitude", speed, stopAnimTime, Time.deltaTime);
             }
         }
 
