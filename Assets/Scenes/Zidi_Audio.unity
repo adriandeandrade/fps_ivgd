@@ -2613,6 +2613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfx:
   - name: gunshot
+    clip: {fileID: 0}
     source: {fileID: 0}
   bgm:
   - name: titlescreen
@@ -5162,6 +5163,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8858169669187876397, guid: 9f0d2c88a7360824ea61c559391a9243,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8858169669187709453, guid: 9f0d2c88a7360824ea61c559391a9243,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5246,6 +5252,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.113
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478619894116604182, guid: 9f0d2c88a7360824ea61c559391a9243,
+        type: 3}
+      propertyPath: m_TagString
+      value: Arms
+      objectReference: {fileID: 0}
+    - target: {fileID: 795791797, guid: 9f0d2c88a7360824ea61c559391a9243, type: 3}
+      propertyPath: ignoreMask.m_Bits
+      value: 311
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f0d2c88a7360824ea61c559391a9243, type: 3}

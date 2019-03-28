@@ -17,5 +17,5 @@ MonoBehaviour:
   burstCount: 0
   fireRate: 0.1
   fireRange: 300
-  reloadTime: 0.4
+  reloadTime: 0.6
   gunName: Colt M1911

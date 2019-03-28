@@ -30,6 +30,7 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         fireType = gunData.fireType;
+        bulletsLeft = gunData.magazineCapacity;
     }
 
     private void LateUpdate()
@@ -83,6 +84,8 @@ public class Gun : MonoBehaviour
 
         isReloading = true;
         yield return new WaitForSeconds(0.2f);
+
+        //animator.SetTrigger("Reload");
 
         float reloadSpeed = 1f / gunData.reloadTime;
         float percent = 0;
