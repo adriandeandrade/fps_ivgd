@@ -7,8 +7,8 @@ using UnityEngine;
 public class PlayerMotor : MonoBehaviour
 {
     [Header("Player Configuration")]
-    [SerializeField] private float speed = 10.0f;
-    [SerializeField] private float walkSpeed;
+    [SerializeField] private float sprintSpeed = 15.0f;
+    [SerializeField] private float walkSpeed = 10.0f;
     [SerializeField] private float gravity = 10.0f;
     [SerializeField] private float maxVelocityChange = 10.0f;
     [SerializeField] private float jumpHeight = 2.0f;
@@ -22,15 +22,24 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float startAnimTime = 0.3f;
     [SerializeField] private float stopAnimTime = 0.15f;
 
-    bool grounded = false;
-    bool isWalking;
+    public bool IsSprinting { get { return isSprinting; } set { isSprinting = value; } }
+    public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
 
+    bool isGrounded = false;
+    bool isSprinting;
+    bool isJumping;
+
+    float horizontal;
+    float vertical;
+
+    InputManager inputManager;
     Rigidbody rBody;
     Camera cam;
 
     void Awake()
     {
         rBody = GetComponent<Rigidbody>();
+        inputManager = GetComponent<InputManager>();
         cam = Camera.main;
         rBody.freezeRotation = true;
         rBody.useGravity = false;
@@ -40,76 +49,62 @@ public class PlayerMotor : MonoBehaviour
     {
         mouseLook = new MouseLook();
         mouseLook.Init(transform, cam2);
-        walkSpeed = speed / 2;
     }
 
     private void Update()
     {
-        InputMagnitude();
+        //InputMagnitude();
+        //ControlInputs();
+        HandleAnimations();
         RotateView();
     }
 
     void FixedUpdate()
     {
-        if (grounded)
+        if (isGrounded)
         {
             // Calculate how fast we should be moving
-            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Vector3 targetVelocity = inputManager.Movement;
             targetVelocity = transform.TransformDirection(targetVelocity);
 
-            if (Input.GetButton("Walk"))
-            {
-                targetVelocity *= walkSpeed;
-                isWalking = true;
-            }
+            if(isSprinting)
+                targetVelocity *= sprintSpeed;
             else
-            {
-                targetVelocity *= speed;
-                isWalking = false;
-            }
+                targetVelocity *= walkSpeed;
 
             // Apply a force that attempts to reach our target velocity
             Vector3 velocity = rBody.velocity;
             Vector3 velocityChange = (targetVelocity - velocity);
+
             velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
             velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
             velocityChange.y = 0;
+
             rBody.AddForce(velocityChange, ForceMode.VelocityChange);
 
-            // Jump
-            if (canJump && Input.GetButton("Jump"))
+            if (canJump && isJumping)
             {
                 rBody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+                isJumping = false;
             }
         }
 
         // We apply gravity manually for more tuning control
         rBody.AddForce(new Vector3(0, -gravity * rBody.mass, 0));
 
-        grounded = false;
+        isGrounded = false;
 
         mouseLook.UpdateCursorLock();
     }
 
-    private void InputMagnitude()
+    private void HandleAnimations()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        float _speed = new Vector2(horizontal, vertical).sqrMagnitude;
-
-        if(isWalking)
+        if(inputManager.InputMag > 0.01f)
         {
-            _speed = _speed / 2f;
-        }
-
-        if (speed > 0.01f)
+            animator.SetFloat("InputMagnitude", inputManager.InputMag, startAnimTime, Time.deltaTime);
+        } else if(inputManager.InputMag < 0.01f)
         {
-            animator.SetFloat("InputMagnitude", _speed, startAnimTime, Time.deltaTime);
-        }
-        else if (speed < 0.01f)
-        {
-            animator.SetFloat("InputMagnitude", _speed, stopAnimTime, Time.deltaTime);
+            animator.SetFloat("InputMagnitude", inputManager.InputMag, stopAnimTime, Time.deltaTime);
         }
     }
 
@@ -120,7 +115,7 @@ public class PlayerMotor : MonoBehaviour
 
     void OnCollisionStay()
     {
-        grounded = true;
+        isGrounded = true;
     }
 
     float CalculateJumpVerticalSpeed()
