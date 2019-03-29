@@ -85,7 +85,7 @@ public class Gun : MonoBehaviour
         isReloading = true;
         yield return new WaitForSeconds(0.2f);
 
-        //animator.SetTrigger("Reload");
+        animator.SetTrigger("Reload");
 
         float reloadSpeed = 1f / gunData.reloadTime;
         float percent = 0;

@@ -8,12 +8,14 @@ public class PlayerMotor : MonoBehaviour
 {
     [Header("Player Configuration")]
     [SerializeField] private float speed = 10.0f;
+    [SerializeField] private float walkSpeed;
     [SerializeField] private float gravity = 10.0f;
     [SerializeField] private float maxVelocityChange = 10.0f;
     [SerializeField] private float jumpHeight = 2.0f;
     [SerializeField] private bool canJump = true;
     [SerializeField] private Transform cam2;
     [SerializeField] private MouseLook mouseLook;
+    [SerializeField] private KeyCode sprintKey;
 
     [Header("Animation")]
     [SerializeField] private Animator animator;
@@ -21,6 +23,7 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float stopAnimTime = 0.15f;
 
     bool grounded = false;
+    bool isWalking;
 
     Rigidbody rBody;
     Camera cam;
@@ -37,6 +40,7 @@ public class PlayerMotor : MonoBehaviour
     {
         mouseLook = new MouseLook();
         mouseLook.Init(transform, cam2);
+        walkSpeed = speed / 2;
     }
 
     private void Update()
@@ -52,7 +56,17 @@ public class PlayerMotor : MonoBehaviour
             // Calculate how fast we should be moving
             Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             targetVelocity = transform.TransformDirection(targetVelocity);
-            targetVelocity *= speed;
+
+            if (Input.GetButton("Walk"))
+            {
+                targetVelocity *= walkSpeed;
+                isWalking = true;
+            }
+            else
+            {
+                targetVelocity *= speed;
+                isWalking = false;
+            }
 
             // Apply a force that attempts to reach our target velocity
             Vector3 velocity = rBody.velocity;
@@ -82,15 +96,20 @@ public class PlayerMotor : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        float speed = new Vector2(horizontal, vertical).sqrMagnitude;
+        float _speed = new Vector2(horizontal, vertical).sqrMagnitude;
+
+        if(isWalking)
+        {
+            _speed = _speed / 2f;
+        }
 
         if (speed > 0.01f)
         {
-            animator.SetFloat("InputMagnitude", speed, startAnimTime, Time.deltaTime);
+            animator.SetFloat("InputMagnitude", _speed, startAnimTime, Time.deltaTime);
         }
         else if (speed < 0.01f)
         {
-            animator.SetFloat("InputMagnitude", speed, stopAnimTime, Time.deltaTime);
+            animator.SetFloat("InputMagnitude", _speed, stopAnimTime, Time.deltaTime);
         }
     }
 
