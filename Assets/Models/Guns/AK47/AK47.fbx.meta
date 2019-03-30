@@ -1,74 +1,64 @@
 fileFormatVersion: 2
-guid: af7dd858e7ce38c49b84bf91faa0ce9a
+guid: f16ddc5cb6db7224ea3ca82c36b1ba04
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: 1911
-    100002: 1911_armature
-    100004: //RootNode
-    100006: Magazine
-    100008: Root
-    100010: Slide
-    100012: Empty
-    400000: 1911
-    400002: 1911_armature
-    400004: //RootNode
-    400006: Magazine
-    400008: Root
-    400010: Slide
-    400012: Empty
-    2100000: mat_details
-    2100002: mat_pistol_grip
-    2100004: mat_trigger
-    2100006: mat_handgrips
-    2100008: mat_slide
-    2100010: mat_barrel
-    2100012: mat_hammer
-    4300000: 1911
-    7400000: 1911_armature|reload_1911
-    7400002: reload
-    7400004: shoot
-    7400006: idle
-    7400008: 1911_armature|m1911_idle
+    100000: //RootNode
+    100002: ak47
+    100004: Armature
+    100006: Bolt
+    100008: Magazine
+    100010: Root
+    100012: fps_arms_armature
+    100014: fps_arms_mesh
+    100016: Hand.L
+    100018: Hand.L_end
+    100020: Hand.R
+    100022: Hand.R_end
+    100024: LowerArm.L
+    100026: LowerArm.R
+    100028: UpperArm.L
+    100030: UpperArm.R
+    400000: //RootNode
+    400002: ak47
+    400004: Armature
+    400006: Bolt
+    400008: Magazine
+    400010: Root
+    400012: fps_arms_armature
+    400014: fps_arms_mesh
+    400016: Hand.L
+    400018: Hand.L_end
+    400020: Hand.R
+    400022: Hand.R_end
+    400024: LowerArm.L
+    400026: LowerArm.R
+    400028: UpperArm.L
+    400030: UpperArm.R
+    2100000: metal
+    2100002: wood
+    2100004: mat_sleeve
+    2100006: mat_skin
+    4300000: ak47
+    4300002: fps_arms_mesh
+    7400000: ak47_idle
+    7400002: ak47_reload
+    7400004: sk47_shoot
     9500000: //RootNode
-    13700000: 1911
+    13700000: ak47
+    13700002: fps_arms_mesh
     2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mat_barrel
-    second: {fileID: 2100000, guid: 4f0654ba7d938fe4cb2f772eb334dc99, type: 2}
+      name: metal
+    second: {fileID: 2100000, guid: a9096698e7274e64c882e1667c1a6f69, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mat_details
-    second: {fileID: 2100000, guid: ec0e9ebf81b32ad4fa688a7b491b5281, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_hammer
-    second: {fileID: 2100000, guid: ebf93cf352d8b13428f2b8b93287b3e0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_handgrips
-    second: {fileID: 2100000, guid: ea8674f83cd64d24e9674a5d0dd9cfab, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_pistol_grip
-    second: {fileID: 2100000, guid: e5373463b3f02dd43aa94f6c963bf4ed, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_slide
-    second: {fileID: 2100000, guid: 70165c1330fde724aaa5db795753d94d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mat_trigger
-    second: {fileID: 2100000, guid: 681efcf22c1cad744930b9d15a9ec99a, type: 2}
+      name: wood
+    second: {fileID: 2100000, guid: 2129b90e23b42e34aa21d4c9e7f75475, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -97,38 +87,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 1911_armature|m1911_idle
-      takeName: 1911_armature|m1911_idle
+      name: ak47_idle
+      takeName: Armature|AK47_idle
       firstFrame: 0
       lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: shoot
-      takeName: 1911_armature|m1911_shoot
-      firstFrame: 0
-      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -153,10 +115,38 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: reload
-      takeName: 1911_armature|1911_armature|1911_armature|reload_1911|1911_armature|reload_19
+      name: ak47_reload
+      takeName: Armature|AK47_reload
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 87
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sk47_shoot
+      takeName: Armature|AK47_shoot
+      firstFrame: 0
+      lastFrame: 6
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

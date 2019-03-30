@@ -127,9 +127,11 @@ public class Gun : MonoBehaviour
 
         playerMotor.IsReloading = true;
         isReloading = true;
+        
         yield return new WaitForSeconds(0.2f);
 
         animator.SetTrigger("Reload");
+        arms.SetBool("IsReloading", true);
 
         float reloadSpeed = 1f / gunData.reloadTime;
         float percent = 0;
@@ -142,6 +144,7 @@ public class Gun : MonoBehaviour
 
         isReloading = false;
         playerMotor.IsReloading = false;
+        arms.SetBool("IsReloading", false);
         bulletsLeft = gunData.magazineCapacity;
         Debug.Log("Finished Reloading!");
     }
