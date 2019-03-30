@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     Gun currentlyEquippedGun;
 
+    public Gun CurrentlyEquippedGun { get { return currentlyEquippedGun; } set { currentlyEquippedGun = value; } }
+
     private void Start()
     {
         currentlyEquippedGun = GetComponentInChildren<Gun>();
@@ -13,19 +15,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButton(0))
+        if (InputManager.instance.Shoot > 0)
         {
             currentlyEquippedGun.OnTriggerHold();
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if (InputManager.instance.Shoot <= 0)
         {
             currentlyEquippedGun.OnTriggerReleased();
-        }
-
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            currentlyEquippedGun.Reload();
         }
     }
 }

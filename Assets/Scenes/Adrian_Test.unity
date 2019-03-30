@@ -1506,6 +1506,58 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1759448523}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &635525398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 635525399}
+  - component: {fileID: 635525400}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &635525399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635525398}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.780533, y: 5.2495036, z: -2.2628074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &635525400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635525398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f08f7ffab625146b6d1b78089e9d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useRaw: 0
+  handleMovement: 1
+  xAxisName: Horizontal
+  yAxisName: Vertical
+  sprintButtonName: Sprint
+  jumpButtonName: Jump
+  adsButtonName: AimDownSights
+  primaryAttackButtonName: PrimaryAttack
+  reloadButton: Fire3
 --- !u!1001 &670751600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3040,26 +3092,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.000029, y: 6.0000677, z: 1.0000086}
   m_Center: {x: 0.0000121593475, y: 2.9997969, z: 0.4999878}
---- !u!1 &1443072339 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7635599702273278505, guid: 5ade24a2937494847bd2b86171fba940,
-    type: 3}
-  m_PrefabInstance: {fileID: 1792751737368743441}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1443072342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443072339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d8ab826525d6064ba648f6804a1f146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 0.055
-  maxAmount: 0.09
 --- !u!1001 &1448111551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5146,23 +5178,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2548783694104734993, guid: 5ade24a2937494847bd2b86171fba940,
         type: 3}
-      propertyPath: walkSpeed
-      value: 3
+      propertyPath: speedWhileAiming
+      value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2548783694104734993, guid: 5ade24a2937494847bd2b86171fba940,
+    - target: {fileID: 2548783694104735471, guid: 5ade24a2937494847bd2b86171fba940,
         type: 3}
-      propertyPath: sprintSpeed
-      value: 5
+      propertyPath: m_Height
+      value: 1.88
       objectReference: {fileID: 0}
-    - target: {fileID: 7635599702273318409, guid: 5ade24a2937494847bd2b86171fba940,
+    - target: {fileID: 2548783694104735471, guid: 5ade24a2937494847bd2b86171fba940,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.24
+      propertyPath: m_Center.y
+      value: 0.94
       objectReference: {fileID: 0}
-    - target: {fileID: 7635599702273318409, guid: 5ade24a2937494847bd2b86171fba940,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.24
+    - target: {fileID: 509032847, guid: 5ade24a2937494847bd2b86171fba940, type: 3}
+      propertyPath: swayAmount
+      value: 0.025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ade24a2937494847bd2b86171fba940, type: 3}

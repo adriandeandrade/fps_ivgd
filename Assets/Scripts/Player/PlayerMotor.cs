@@ -9,13 +9,18 @@ public class PlayerMotor : MonoBehaviour
     [Header("Player Configuration")]
     [SerializeField] private float sprintSpeed = 15.0f;
     [SerializeField] private float walkSpeed = 10.0f;
+    [SerializeField] private float speedWhileAiming = 8f;
     [SerializeField] private float gravity = 10.0f;
     [SerializeField] private float maxVelocityChange = 10.0f;
     [SerializeField] private float jumpHeight = 2.0f;
-    [SerializeField] private bool canJump = true;
+    [SerializeField] private float maxDistanceFromWall = 5f;
+    [SerializeField] private float avoidWallsArmSpeed = 2f;
     [SerializeField] private Transform cam2;
+    [SerializeField] private Transform armsT;
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private KeyCode sprintKey;
+
+    [SerializeField] private Vector3 closeToWallArmPosition;
 
     [Header("Animation")]
     [SerializeField] private Animator animator;
@@ -24,13 +29,26 @@ public class PlayerMotor : MonoBehaviour
 
     public bool IsSprinting { get { return isSprinting; } set { isSprinting = value; } }
     public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
+    public bool IsHittingWall { get { return isHittingWall; } set { isHittingWall = value; } }
+    public bool IsReloading { get { return isReloading; } set { isReloading = value; } }
+    public bool IsAiming { get { return isAiming; } set { isAiming = value; } }
+    public bool CanSprint { get { return canSprint; } set { canSprint = value; } }
 
     bool isGrounded = false;
     bool isSprinting;
+    bool isReloading;
     bool isJumping;
+    bool isShooting;
+    bool isHittingWall;
+    bool isAiming;
+    bool canJump = true;
+    bool canShoot;
+    bool canSprint;
 
     float horizontal;
     float vertical;
+
+    Vector3 originalWeaponPosition;
 
     InputManager inputManager;
     Rigidbody rBody;
@@ -39,7 +57,7 @@ public class PlayerMotor : MonoBehaviour
     void Awake()
     {
         rBody = GetComponent<Rigidbody>();
-        inputManager = GetComponent<InputManager>();
+        inputManager = InputManager.instance;
         cam = Camera.main;
         rBody.freezeRotation = true;
         rBody.useGravity = false;
@@ -48,18 +66,25 @@ public class PlayerMotor : MonoBehaviour
     private void Start()
     {
         mouseLook = new MouseLook();
-        mouseLook.Init(transform, cam2);
+        mouseLook.Init(transform, cam.transform);
+        originalWeaponPosition = armsT.localPosition;
     }
 
     private void Update()
     {
-        //InputMagnitude();
-        //ControlInputs();
-        HandleAnimations();
+        if (isAiming && !isReloading) { canSprint = false; } else if(!isAiming && !isReloading) { canSprint = true; } 
+
+        HandleMovementAnimations();
+        ArmsAvoidWall();
         RotateView();
     }
 
     void FixedUpdate()
+    {
+        Movement();
+    }
+
+    private void Movement()
     {
         if (isGrounded)
         {
@@ -67,10 +92,12 @@ public class PlayerMotor : MonoBehaviour
             Vector3 targetVelocity = inputManager.Movement;
             targetVelocity = transform.TransformDirection(targetVelocity);
 
-            if(isSprinting)
+            if (isSprinting)
                 targetVelocity *= sprintSpeed;
-            else
+            else if (!isSprinting && !isAiming)
                 targetVelocity *= walkSpeed;
+            else
+                targetVelocity *= speedWhileAiming;
 
             // Apply a force that attempts to reach our target velocity
             Vector3 velocity = rBody.velocity;
@@ -97,14 +124,33 @@ public class PlayerMotor : MonoBehaviour
         mouseLook.UpdateCursorLock();
     }
 
-    private void HandleAnimations()
+    private void HandleMovementAnimations()
     {
-        if(inputManager.InputMag > 0.01f)
+        if (inputManager.InputMag > 0.01f)
         {
             animator.SetFloat("InputMagnitude", inputManager.InputMag, startAnimTime, Time.deltaTime);
-        } else if(inputManager.InputMag < 0.01f)
+        }
+        else if (inputManager.InputMag < 0.01f)
         {
             animator.SetFloat("InputMagnitude", inputManager.InputMag, stopAnimTime, Time.deltaTime);
+        }
+    }
+
+    private void ArmsAvoidWall()
+    {
+        RaycastHit hit;
+        Debug.DrawLine(cam2.transform.position, cam.transform.forward * maxDistanceFromWall, Color.red);
+        if (Physics.Raycast(cam2.transform.position, cam.transform.forward, out hit, maxDistanceFromWall))
+        {
+            Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, closeToWallArmPosition, avoidWallsArmSpeed * Time.deltaTime);
+            armsT.localPosition = targetPosition;
+            isHittingWall = true;
+        }
+        else
+        {
+            Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, originalWeaponPosition, avoidWallsArmSpeed * Time.deltaTime);
+            armsT.localPosition = targetPosition;
+            isHittingWall = false;
         }
     }
 

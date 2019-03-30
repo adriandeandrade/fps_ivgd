@@ -8,22 +8,28 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject debugItem;
     [SerializeField] private LayerMask ignoreMask;
 
+    public bool IsReloading { get { return isReloading; } private set { } }
+    public bool IsAimingDownSights { get { return isAimingDownSights; } set { isAimingDownSights = value; } }
+
     int bulletsLeft;
     int shotsRemainingInBurst;
     float nextFireTime;
 
     bool isReloading;
+    bool isAimingDownSights;
     bool triggerReleasedSinceLastShot;
 
     Camera cam;
     FireTypes fireType;
     Animator animator;
     Animator arms;
+    PlayerMotor playerMotor;
 
     private void Awake()
     {
         cam = Camera.main;
         animator = GetComponent<Animator>();
+        playerMotor = GetComponentInParent<PlayerMotor>();
         arms = GameObject.FindGameObjectWithTag("Arms").GetComponent<Animator>();
     }
 
@@ -31,6 +37,16 @@ public class Gun : MonoBehaviour
     {
         fireType = gunData.fireType;
         bulletsLeft = gunData.magazineCapacity;
+    }
+
+    private void Update()
+    {
+        arms.SetBool("IsAiming", isAimingDownSights);
+    }
+
+    private void FixedUpdate()
+    {
+        HandleAnimationSynchronization();
     }
 
     private void LateUpdate()
@@ -43,7 +59,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        if (!isReloading && Time.time > nextFireTime && bulletsLeft > 0)
+        if (CanShoot())
         {
             if (fireType == FireTypes.BURST)
             {
@@ -61,8 +77,8 @@ public class Gun : MonoBehaviour
                 }
             }
 
-            animator.SetTrigger("Shoot");
-            arms.SetTrigger("Shoot");
+            animator.CrossFadeInFixedTime("shoot", gunData.fireRate);
+            arms.CrossFadeInFixedTime("shoot", gunData.fireRate);
 
             ShootRay();
             bulletsLeft--;
@@ -78,10 +94,38 @@ public class Gun : MonoBehaviour
         }
     }
 
+    public bool CanShoot()
+    {
+        if(!isReloading && Time.time > nextFireTime && bulletsLeft > 0)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    private void HandleAnimationSynchronization()
+    {
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo armsInfo = arms.GetCurrentAnimatorStateInfo(0);
+
+        if (info.IsName("shoot"))
+        {
+            animator.SetBool("Shoot", false);
+        }
+
+        if (armsInfo.IsName("shoot"))
+        {
+            arms.SetBool("Shoot", false);
+        }
+    }
+
     IEnumerator AnimateReload()
     {
         Debug.Log("Reloading...");
 
+        playerMotor.IsReloading = true;
         isReloading = true;
         yield return new WaitForSeconds(0.2f);
 
@@ -97,6 +141,7 @@ public class Gun : MonoBehaviour
         }
 
         isReloading = false;
+        playerMotor.IsReloading = false;
         bulletsLeft = gunData.magazineCapacity;
         Debug.Log("Finished Reloading!");
     }

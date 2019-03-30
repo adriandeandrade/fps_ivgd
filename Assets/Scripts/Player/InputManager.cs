@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    #region Singleton
+    public static InputManager instance;
+
+    private void InitInputManager()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(this);
+        }
+
+
+    }
+    #endregion
+
     [Header("Input Manager Configuration")]
     [SerializeField] private bool useRaw;
     [SerializeField] private bool handleMovement;
@@ -13,21 +31,32 @@ public class InputManager : MonoBehaviour
     [SerializeField] private string yAxisName;
     [SerializeField] private string sprintButtonName;
     [SerializeField] private string jumpButtonName;
+    [SerializeField] public string adsButtonName;
+    [SerializeField] public string primaryAttackButtonName;
+    [SerializeField] public string reloadButton;
 
     float horizontal;
     float vertical;
+    float ads;
+    float shoot;
     float inputMagnitude;
+
 
     Vector3 movement;
 
     PlayerMotor playerMotor;
+    Player player;
 
     public Vector3 Movement { get { return movement; } private set { } }
     public float InputMag { get { return inputMagnitude; } private set { } }
+    public float ADS { get { return ads; } set { ads = value; } }
+    public float Shoot { get { return shoot; } set { ads = value; } }
 
     private void Awake()
     {
-        playerMotor = GetComponent<PlayerMotor>();
+        InitInputManager();
+        playerMotor = FindObjectOfType<PlayerMotor>();
+        player = playerMotor.gameObject.GetComponent<Player>();
     }
 
     private void Update()
@@ -47,12 +76,15 @@ public class InputManager : MonoBehaviour
 
             InputMagnitude(movement);
 
+            shoot = Input.GetAxis(primaryAttackButtonName);
+            ads = Input.GetAxis(adsButtonName);
+
             if (Input.GetButtonDown(jumpButtonName))
             {
                 playerMotor.IsJumping = true;
             }
 
-            if (Input.GetButton(sprintButtonName))
+            if (Input.GetButton(sprintButtonName) && playerMotor.CanSprint)
             {
                 playerMotor.IsSprinting = true;
                 inputMagnitude *= 2;
@@ -61,6 +93,35 @@ public class InputManager : MonoBehaviour
             {
                 playerMotor.IsSprinting = false;
             }
+
+            if(ads > 0 && Input.GetButton(sprintButtonName))
+            {
+                player.CurrentlyEquippedGun.IsAimingDownSights = false;
+                playerMotor.IsAiming = false;
+                playerMotor.IsSprinting = true;
+            }
+
+            if (ads > 0 && playerMotor.IsSprinting)
+            {
+                player.CurrentlyEquippedGun.IsAimingDownSights = true;
+                playerMotor.IsAiming = true;
+                playerMotor.IsSprinting = false;
+            }
+            else if (ads <= 0)
+            {
+                player.CurrentlyEquippedGun.IsAimingDownSights = false;
+                playerMotor.IsAiming = false;
+            }
+
+            if (Input.GetButtonDown(reloadButton))
+            {
+                player.CurrentlyEquippedGun.Reload();
+            } else if(Input.GetButtonDown(reloadButton) && playerMotor.IsSprinting)
+            {
+                playerMotor.IsSprinting = false;
+                player.CurrentlyEquippedGun.Reload();
+            }
+
         }
     }
 
