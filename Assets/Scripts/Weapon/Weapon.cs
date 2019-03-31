@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour
     //Public Variables
     [SerializeField] private WeaponData gunData;
     [SerializeField] private GameObject debugItem;
+    [SerializeField] private GameObject shellPrefab;
+    [SerializeField] private Transform shellEjection;
     [SerializeField] private LayerMask ignoreMask;
 
     enum WeaponStates { READY, RELOAD };
@@ -76,6 +78,7 @@ public class Weapon : MonoBehaviour
 
             arms.CrossFadeInFixedTime("shoot", 0.01f);
 
+            Instantiate(shellPrefab, shellEjection.position, Quaternion.identity);
             ShootRay();
             bulletsLeft--;
             nextFireTime = Time.time + gunData.fireRate;
