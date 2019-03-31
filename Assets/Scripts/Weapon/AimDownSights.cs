@@ -8,13 +8,15 @@ public class AimDownSights : MonoBehaviour
     [SerializeField] private Vector3 aimPosition;
     [SerializeField] private float aimDownSightSpeed = 8f;
 
-    [SerializeField] private Gun currentGun;
+    [SerializeField] private Weapon currentGun;
 
-    PlayerMotor player;
+    PlayerMotor playerMotor;
+    Player player;
 
     private void Awake()
     {
-        player = GetComponentInParent<PlayerMotor>();
+        player = GetComponentInParent<Player>();
+        playerMotor = GetComponentInParent<PlayerMotor>();
     }
 
     private void Start()
@@ -29,18 +31,16 @@ public class AimDownSights : MonoBehaviour
 
     private void AimDownSight()
     {
-        if (InputManager.instance.ADS > 0 && !currentGun.IsReloading && !player.IsHittingWall)
+        if (InputManager.instance.ADS > 0 && !player.IsReloading && !playerMotor.IsHittingWall)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, aimPosition, aimDownSightSpeed * Time.deltaTime);
-            currentGun.IsAimingDownSights = true;
-            player.IsAiming = true;
+            player.IsAimingDownSights = true;
         }
 
         else
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, originalPosition, aimDownSightSpeed * Time.deltaTime);
-            currentGun.IsAimingDownSights = false;
-            player.IsAiming = false;
+            player.IsAimingDownSights = false;
         }
     }
 }

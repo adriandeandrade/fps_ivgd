@@ -20,7 +20,7 @@ public class WeaponSway : MonoBehaviour
     private void Update()
     {
         float factorX = -Input.GetAxis("Mouse X") * swayAmount;
-        float factorY = -Input.GetAxis("Vertical") * swayAmount;
+        float factorY = -Input.GetAxis("Mouse Y") * swayAmount;
 
         factorX = Mathf.Clamp(factorX, -maxSway, maxSway);
         factorY = Mathf.Clamp(factorY, -maxSway, maxSway);

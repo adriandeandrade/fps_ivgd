@@ -34,8 +34,6 @@ public class AudioManager : MonoBehaviour
             music.source = gameObject.AddComponent<AudioSource>();
             music.source.clip = music.clip;
         }
-
-        
     }
 
     public void PlayMusic(string son)

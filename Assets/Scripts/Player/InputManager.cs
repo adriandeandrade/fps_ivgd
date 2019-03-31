@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
 
     [Header("Input Manager Configuration")]
     [SerializeField] private bool useRaw;
-    [SerializeField] private bool handleMovement;
+    [SerializeField] private bool handleMovement = true;
 
     [Header("Inputs")]
     [SerializeField] private string xAxisName;
@@ -41,7 +41,6 @@ public class InputManager : MonoBehaviour
     float shoot;
     float inputMagnitude;
 
-
     Vector3 movement;
 
     PlayerMotor playerMotor;
@@ -52,6 +51,8 @@ public class InputManager : MonoBehaviour
     public float ADS { get { return ads; } set { ads = value; } }
     public float Shoot { get { return shoot; } set { ads = value; } }
 
+    public bool HandleMovement { get => handleMovement; set => handleMovement = value; }
+
     private void Awake()
     {
         InitInputManager();
@@ -61,8 +62,8 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (handleMovement)
-        {
+        if (!HandleMovement) return;
+
             if (useRaw)
             {
                 movement = new Vector3(Input.GetAxisRaw(xAxisName), 0, Input.GetAxisRaw(yAxisName));
@@ -94,35 +95,25 @@ public class InputManager : MonoBehaviour
                 playerMotor.IsSprinting = false;
             }
 
-            if(ads > 0 && Input.GetButton(sprintButtonName))
-            {
-                player.CurrentlyEquippedGun.IsAimingDownSights = false;
-                playerMotor.IsAiming = false;
-                playerMotor.IsSprinting = true;
-            }
-
             if (ads > 0 && playerMotor.IsSprinting)
             {
-                player.CurrentlyEquippedGun.IsAimingDownSights = true;
-                playerMotor.IsAiming = true;
+                player.IsAimingDownSights = true;
                 playerMotor.IsSprinting = false;
             }
             else if (ads <= 0)
             {
-                player.CurrentlyEquippedGun.IsAimingDownSights = false;
-                playerMotor.IsAiming = false;
+                player.IsAimingDownSights = false;
             }
 
             if (Input.GetButtonDown(reloadButton))
             {
                 player.CurrentlyEquippedGun.Reload();
-            } else if(Input.GetButtonDown(reloadButton) && playerMotor.IsSprinting)
+            }
+            else if (Input.GetButtonDown(reloadButton) && playerMotor.IsSprinting)
             {
                 playerMotor.IsSprinting = false;
                 player.CurrentlyEquippedGun.Reload();
             }
-
-        }
     }
 
     private void InputMagnitude(Vector3 input)
