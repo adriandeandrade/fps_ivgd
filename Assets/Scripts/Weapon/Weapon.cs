@@ -79,6 +79,7 @@ public class Weapon : MonoBehaviour
             arms.CrossFadeInFixedTime("shoot", 0.01f);
 
             Instantiate(shellPrefab, shellEjection.position, Quaternion.identity);
+            AudioManager.instance.PlaySFX("m1911");
             ShootRay();
             bulletsLeft--;
             nextFireTime = Time.time + gunData.fireRate;

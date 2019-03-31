@@ -142,15 +142,15 @@ public class PlayerMotor : MonoBehaviour
         Debug.DrawLine(cam2.transform.position, cam.transform.forward * maxDistanceFromWall, Color.red);
         if (Physics.Raycast(cam2.transform.position, cam.transform.forward, out hit, maxDistanceFromWall))
         {
-            //Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, closeToWallArmPosition, avoidWallsArmSpeed * Time.deltaTime);
-            //armsT.localPosition = targetPosition;
-            StartCoroutine(AvoidWalls(closeToWallArmPosition, true));
+            Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, closeToWallArmPosition, avoidWallsArmSpeed * Time.deltaTime);
+            armsT.localPosition = targetPosition;
+            //StartCoroutine(AvoidWalls(closeToWallArmPosition, true));
         }
-        else if(isHittingWall)
+        else
         {
-            //Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, originalWeaponPosition, avoidWallsArmSpeed * Time.deltaTime);
-            //armsT.localPosition = targetPosition;
-            StartCoroutine(AvoidWalls(originalWeaponPosition, false));
+            Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, originalWeaponPosition, avoidWallsArmSpeed * Time.deltaTime);
+            armsT.localPosition = targetPosition;
+            //StartCoroutine(AvoidWalls(originalWeaponPosition, false));
         }
     }
 
@@ -158,15 +158,12 @@ public class PlayerMotor : MonoBehaviour
     {
         float duration = 0.1f;
 
-        for(float t = 0f; t < duration; t += Time.deltaTime)
+        for (float t = 0f; t < duration; t += Time.deltaTime)
         {
             Vector3 targetPos = Vector3.Lerp(armsT.localPosition, targetPosition, t / duration);
             armsT.localPosition = targetPos;
             yield return new WaitForEndOfFrame();
         }
-
-        isHittingWall = hittingWall;
-
     }
 
     private void RotateView()
