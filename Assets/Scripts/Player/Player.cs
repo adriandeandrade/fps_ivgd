@@ -6,10 +6,14 @@ public class Player : MonoBehaviour
 {
     Weapon currentlyEquippedGun;
 
+    [SerializeField] private WeaponSlot primarySlot;
+    [SerializeField] private WeaponSlot secondarySlot;
+
     // Private Variables
     bool isReloading;
     bool isAimingDownSights;
     bool triggerReleasedSinceLastShot;
+    WeaponSlot currentSlot;
 
     // Properties
     public Weapon CurrentlyEquippedGun { get { return currentlyEquippedGun; } set { currentlyEquippedGun = value; } }
@@ -21,24 +25,19 @@ public class Player : MonoBehaviour
 
     // Components
     Animator armsAnimator;
-    Animator currentWeaponAnimator;
+
 
     private void Awake()
     {
-        currentlyEquippedGun = GetComponentInChildren<Weapon>();
-
-        armsAnimator = GameObject.FindGameObjectWithTag("Arms").GetComponent<Animator>();
-
-        if (currentlyEquippedGun != null)
-        {
-            currentWeaponAnimator = GetComponentInChildren<Weapon>().GetComponent<Animator>();
-        }
+        currentlyEquippedGun = primarySlot.weaponsInSlot[0].gameObject.GetComponentInChildren<Weapon>();
+        armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
     }
 
     private void Start()
     {
         isReloading = false;
         isAimingDownSights = false;
+        currentSlot = primarySlot;
     }
 
     private void Update()
@@ -47,6 +46,8 @@ public class Player : MonoBehaviour
         {
             HandleCurrentWeapon();
         }
+
+        SwitchWeapon();
     }
 
     private void HandleCurrentWeapon()
@@ -69,4 +70,41 @@ public class Player : MonoBehaviour
         TriggerReleasedSinceLastShot = true;
         currentlyEquippedGun.ResetBurst();
     }
+
+    private void SwitchWeapon()
+    {
+        if (Input.GetButtonDown(InputManager.instance.switchWeaponButtonName))
+        {
+            if (isReloading)
+            {
+                currentlyEquippedGun.CancelReload();
+            }
+
+            if (currentSlot == primarySlot)
+            {
+                primarySlot.slot.gameObject.SetActive(false);
+                secondarySlot.slot.gameObject.SetActive(true);
+                currentSlot = secondarySlot;
+                currentlyEquippedGun = secondarySlot.weaponsInSlot[0].gameObject.GetComponentInChildren<Weapon>();
+                armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
+            }
+            else if (currentSlot == secondarySlot)
+            {
+                secondarySlot.slot.gameObject.SetActive(false);
+                primarySlot.slot.gameObject.SetActive(true);
+                currentSlot = primarySlot;
+                currentlyEquippedGun = primarySlot.weaponsInSlot[0].gameObject.GetComponentInChildren<Weapon>();
+                armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
+            }
+        }
+    }
+
+}
+
+[System.Serializable]
+public class WeaponSlot
+{
+    public Transform slot;
+    public List<GameObject> weaponsInSlot;
+    public int weaponIndex;
 }

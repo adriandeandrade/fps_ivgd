@@ -47,7 +47,6 @@ public class AimDownSights : MonoBehaviour
             float targetFov = Mathf.Lerp(virtualCamera.m_Lens.FieldOfView, desiredFov, changeFovSpeed * Time.deltaTime);
             virtualCamera.m_Lens.FieldOfView = targetFov;
             player.IsAimingDownSights = true;
-            Debug.Log(player.IsAimingDownSights);
         }
 
         else
@@ -56,7 +55,6 @@ public class AimDownSights : MonoBehaviour
             float targetFov = Mathf.Lerp(virtualCamera.m_Lens.FieldOfView, originalFov, changeFovSpeed * Time.deltaTime);
             virtualCamera.m_Lens.FieldOfView = targetFov;
             player.IsAimingDownSights = false;
-            Debug.Log(player.IsAimingDownSights);
 
         }
     }

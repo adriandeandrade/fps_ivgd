@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
 
     // Private Variables
     int bulletsLeft;
+    int bulletsLeftBeforeReload;
     int shotsRemainingInBurst;
     float nextFireTime;
 
@@ -90,6 +91,7 @@ public class Weapon : MonoBehaviour
     {
         if(!player.IsReloading && bulletsLeft != gunData.magazineCapacity)
         {
+            bulletsLeftBeforeReload = bulletsLeft;
             StartCoroutine(AnimateReload());
         }
     }
@@ -150,6 +152,12 @@ public class Weapon : MonoBehaviour
         {
             Instantiate(debugItem, hit.point, Quaternion.identity);
         }
+    }
+    
+    public void CancelReload()
+    {
+        player.IsReloading = false;
+        bulletsLeft = bulletsLeftBeforeReload;
     }
 
     public void ResetBurst()

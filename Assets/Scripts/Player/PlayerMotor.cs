@@ -24,7 +24,6 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private Vector3 closeToWallArmPosition;
 
     [Header("Animation")]
-    [SerializeField] private Animator anijmator;
     [SerializeField] private float startAnimTime = 0.3f;
     [SerializeField] private float stopAnimTime = 0.15f;
 
