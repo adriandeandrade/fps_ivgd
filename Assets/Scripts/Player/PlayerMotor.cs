@@ -140,7 +140,7 @@ public class PlayerMotor : MonoBehaviour
     {
         RaycastHit hit;
         Debug.DrawLine(cam2.transform.position, cam.transform.forward * maxDistanceFromWall, Color.red);
-        if (Physics.Raycast(cam2.transform.position, cam.transform.forward, out hit, maxDistanceFromWall) && !isHittingWall)
+        if (Physics.Raycast(cam2.transform.position, cam.transform.forward, out hit, maxDistanceFromWall))
         {
             //Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, closeToWallArmPosition, avoidWallsArmSpeed * Time.deltaTime);
             //armsT.localPosition = targetPosition;
@@ -161,7 +161,7 @@ public class PlayerMotor : MonoBehaviour
         for(float t = 0f; t < duration; t += Time.deltaTime)
         {
             Vector3 targetPos = Vector3.Lerp(armsT.localPosition, targetPosition, t / duration);
-            armsT.localPosition = targetPosition;
+            armsT.localPosition = targetPos;
             yield return new WaitForEndOfFrame();
         }
 
