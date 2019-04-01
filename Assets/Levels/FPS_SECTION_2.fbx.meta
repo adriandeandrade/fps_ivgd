@@ -1,0 +1,487 @@
+fileFormatVersion: 2
+guid: 08fb378b9cb149842a8766cae8f4cf75
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cube
+    100002: Cube.001
+    100004: Cube.002
+    100006: Cube.003
+    100008: Cube.004
+    100010: Cube.005
+    100012: Cube.006
+    100014: Exterior
+    100016: //RootNode
+    100018: Torus
+    400000: Cube
+    400002: Cube.001
+    400004: Cube.002
+    400006: Cube.003
+    400008: Cube.004
+    400010: Cube.005
+    400012: Cube.006
+    400014: Exterior
+    400016: //RootNode
+    400018: Torus
+    2100000: mat_Walls
+    2100002: mat_SideWalks
+    2100004: mat_Road
+    2100006: mat_B2_Exterior2
+    2100008: mat_B2_Exterior1
+    2100010: mat_B2_Exterior3
+    2100012: mat_B2_Frame
+    2100014: mat_GLOBAL_Window
+    2100016: mat_B2_Door
+    2100018: mat_intBuilding_Roof
+    2100020: mat_intBuilding2_Exterior
+    2100022: mat_intBuilding_Interior2
+    2100024: mat_intBuilding_Interior1
+    2100026: mat_intBuilding_Foundation
+    2100028: mat_intBuilding_Floor
+    2100030: mat_Building_Frame
+    2100032: mat_B3_Exterior
+    2100034: mat_B3_Frame
+    2100036: mat_B3_Roof
+    2100038: mat_B3_Foundation
+    2100040: mat_B3_Door
+    2100042: mat_GarageExterior3
+    2100044: mat_GarageDoor
+    2100046: mat_GarageExterior2
+    2100048: mat_GarageExterior1
+    2100050: mat_GarageAwning
+    2100052: mat_GarageFrame
+    2100054: mat_GarageFoundation
+    2100056: mat_DoorFrame
+    2100058: mat_GarageFloor
+    2100060: mat_GarageInterior1
+    2100062: mat_GarageCeiling
+    2100064: mat_Door
+    2100066: mat_GunStore_Exterior3
+    2100068: mat_GunStore_Foundation
+    2100070: mat_GunStore_Frame
+    2100072: mat_GunStore_Interior
+    2100074: mat_GunStore_CounterShelves
+    2100076: mat_GunStore_CounterTop
+    2100078: mat_B5_Roof
+    2100080: mat_B5_Exterior1
+    2100082: mat_B5_Foundation
+    2100084: mat_B5_Exterior2
+    2100086: mat_B5_Frame
+    2100088: mat_B5_Interior
+    2100090: mat_B5_Floor
+    2100092: mat_B5_Door
+    2100094: mat_Donut_Exterior1
+    2100096: mat_Donut_Foundation
+    2100098: mat_Donut_Exterior2
+    2100100: mat_Donut_Floors
+    2100102: mat_Donut_Exterior3
+    2100104: mat_Donut_Frame
+    2100106: mat_Donut_Interior
+    2100108: mat_Donut_Bench
+    2100110: mat_Donut_TableTop
+    2100112: mat_Dougnut
+    2100114: mat_Dougnut_Icing
+    2300000: Cube
+    2300002: Cube.001
+    2300004: Cube.002
+    2300006: Cube.003
+    2300008: Cube.004
+    2300010: Cube.005
+    2300012: Cube.006
+    2300014: Exterior
+    2300016: Torus
+    3300000: Cube
+    3300002: Cube.001
+    3300004: Cube.002
+    3300006: Cube.003
+    3300008: Cube.004
+    3300010: Cube.005
+    3300012: Cube.006
+    3300014: Exterior
+    3300016: Torus
+    4300000: Cube
+    4300002: Cube.001
+    4300004: Exterior
+    4300006: Cube.003
+    4300008: Cube.004
+    4300010: Cube.006
+    4300012: Cube.002
+    4300014: Cube.005
+    4300016: Torus
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B2_Door
+    second: {fileID: 2100000, guid: 8b95259c2bfef7540b6ff9d2663fd3f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B2_Exterior1
+    second: {fileID: 2100000, guid: aa0af04855fda7d46bdef1b649cd1e00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B2_Exterior2
+    second: {fileID: 2100000, guid: ade4afc00c39fc24b8e883de0d6c4b3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B2_Exterior3
+    second: {fileID: 2100000, guid: 08b1e8fd4dc3d434b9f4c9542f2c26d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B2_Frame
+    second: {fileID: 2100000, guid: 901b63e167bb22f44b6a755f42a7c40a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B3_Door
+    second: {fileID: 2100000, guid: c0ece42ecf9e2214aaad718d3485d8a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B3_Exterior
+    second: {fileID: 2100000, guid: 55abd1f8606af1048b522bc5247aa708, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B3_Foundation
+    second: {fileID: 2100000, guid: 10ccfc7771c18134ca1648deff8f9875, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B3_Frame
+    second: {fileID: 2100000, guid: f5713880a0769ca49a20f87cd07e4978, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B3_Roof
+    second: {fileID: 2100000, guid: ff4bfce212c6b414e9437984c26385e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B5_Door
+    second: {fileID: 2100000, guid: 3c58fa701e35c714399e05fbe8f1dcdb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B5_Exterior1
+    second: {fileID: 2100000, guid: 27ca9e151071eb44bb981db897f811bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B5_Exterior2
+    second: {fileID: 2100000, guid: 7f4bf2204d3d9604d989cf70f9ab5e28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B5_Floor
+    second: {fileID: 2100000, guid: 64f3d894f10f4a443b260c0fa6bb69f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B5_Foundation
+    second: {fileID: 2100000, guid: 89b182aef7fb92a4dba9ab27b7d7fb44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B5_Frame
+    second: {fileID: 2100000, guid: 6d09e45d4ae471f4bad7e3d4bd7af10b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B5_Interior
+    second: {fileID: 2100000, guid: ff19e286564bd6d4ea5f8221f574c396, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B5_Roof
+    second: {fileID: 2100000, guid: 61e59c3a037a4ed4eac7e39d5942d4ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Building_Frame
+    second: {fileID: 2100000, guid: bc95ab918a4292843ac0934eba27aa5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Donut_Bench
+    second: {fileID: 2100000, guid: a4922fe68775b5948adc408caafc943b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Donut_Exterior1
+    second: {fileID: 2100000, guid: ceb9683f4a64d234f9f2a051d32ffe98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Donut_Exterior2
+    second: {fileID: 2100000, guid: a33d7d0bb1c3a114e86e36a4cd47666e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Donut_Exterior3
+    second: {fileID: 2100000, guid: 06ffb739d7995ba42b39986a0d567cf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Donut_Floors
+    second: {fileID: 2100000, guid: a320c6daf96857e48a05f58d77618d5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Donut_Foundation
+    second: {fileID: 2100000, guid: 6e0ca29855838d849bc86fd47652e06c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Donut_Frame
+    second: {fileID: 2100000, guid: 346094c079d18944da90f12b21e0ad8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Donut_Interior
+    second: {fileID: 2100000, guid: 5bcf45e599c6ae340a8343653df00bce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Donut_TableTop
+    second: {fileID: 2100000, guid: 4c5db9a993213334382fad80e35a2d9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Door
+    second: {fileID: 2100000, guid: 897d8abe58a787140bfbddc689031f90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_DoorFrame
+    second: {fileID: 2100000, guid: 9db38b46eb3e6e74a824f2dcb34f422e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Dougnut
+    second: {fileID: 2100000, guid: 7925a7067a1b3ed40961168e06ede79a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Dougnut_Icing
+    second: {fileID: 2100000, guid: d44e4ff17cb3f444cb67f53dc2d897ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GLOBAL_Window
+    second: {fileID: 2100000, guid: 3b2e6fc64cfa31746aa954fe05130987, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageAwning
+    second: {fileID: 2100000, guid: 31e067298556d1e4db88c4936c92cd83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageCeiling
+    second: {fileID: 2100000, guid: 86bc0814cf078d94799ebbfdf906c9a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageDoor
+    second: {fileID: 2100000, guid: 997eac658c7e43047a43b381749a2d34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageExterior1
+    second: {fileID: 2100000, guid: 8d7782e0f1554d943932960bf298a4f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageExterior2
+    second: {fileID: 2100000, guid: 1ac37421047e58f4da4cacb25a9eaf77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageExterior3
+    second: {fileID: 2100000, guid: 912692fabb7901d4587738d4bbd0b13f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageFloor
+    second: {fileID: 2100000, guid: d87d1d083f2f14348a105f3edb5b3502, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageFoundation
+    second: {fileID: 2100000, guid: 833f4199215690349bce63ef5ab4f96a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageFrame
+    second: {fileID: 2100000, guid: 0dc3004f8b38b42479ee5b37c7054e95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GarageInterior1
+    second: {fileID: 2100000, guid: f1cd48f057c8ca740b81a871894670ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GunStore_CounterShelves
+    second: {fileID: 2100000, guid: 0f5be086328469043a8b9dbb054cdac4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GunStore_CounterTop
+    second: {fileID: 2100000, guid: 3c707c9bee09d694aa60887f2470a6e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GunStore_Exterior3
+    second: {fileID: 2100000, guid: c91fd24e71c83d043ab05b2ed03da382, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GunStore_Foundation
+    second: {fileID: 2100000, guid: 5384543fa49113d4aae5429c0b1f1e2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GunStore_Frame
+    second: {fileID: 2100000, guid: 727b6128a0c727a49981be9f5b9bdf74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GunStore_Interior
+    second: {fileID: 2100000, guid: 072132ec368415a46b5ea10443a53f4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Road
+    second: {fileID: 2100000, guid: 0363c2e56b1036e4d8671d022ec4bd0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_SideWalks
+    second: {fileID: 2100000, guid: 91ac06a3d5bb0114c9913bc07ad166ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Walls
+    second: {fileID: 2100000, guid: 5003c8d0a8680ea4ca4bfc75aae8c18d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_intBuilding2_Exterior
+    second: {fileID: 2100000, guid: 1b386038d34a5e74e81f4d918f3a9de3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_intBuilding_Floor
+    second: {fileID: 2100000, guid: e2a32e681e5d26c46b46b0f531cce74c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_intBuilding_Foundation
+    second: {fileID: 2100000, guid: eb4d523cf0eeab14a811db9186e06743, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_intBuilding_Interior1
+    second: {fileID: 2100000, guid: 992875c6230600a479608d2588594e53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_intBuilding_Interior2
+    second: {fileID: 2100000, guid: b69974d255e5902498eae0fbd7cdf739, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_intBuilding_Roof
+    second: {fileID: 2100000, guid: 5659d19966bad8640a079a39cc1b9705, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
