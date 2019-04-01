@@ -150,7 +150,13 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gunData.fireRange, ignoreMask))
         {
-            Instantiate(debugItem, hit.point, Quaternion.identity);
+            //Instantiate(debugItem, hit.point, Quaternion.identity);
+            EnemyHP enemy = hit.collider.GetComponent<EnemyHP>();
+
+            if(enemy != null)
+            {
+                enemy.DeductHealth(2f);
+            }
         }
     }
     
