@@ -8,7 +8,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] private WeaponData gunData;
     [SerializeField] private GameObject debugItem;
     [SerializeField] private GameObject shellPrefab;
+    [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private Transform shellEjection;
+    [SerializeField] private Transform muzzle;
     [SerializeField] private LayerMask ignoreMask;
 
     enum WeaponStates { READY, RELOAD };
@@ -79,7 +81,9 @@ public class Weapon : MonoBehaviour
 
             arms.CrossFadeInFixedTime("shoot", 0.01f);
 
-            Instantiate(shellPrefab, shellEjection.position, Quaternion.identity);
+            Instantiate(shellPrefab, shellEjection.position, shellEjection.rotation);
+            GameObject muzzleFlashInstance = Instantiate(muzzleFlash, muzzle.position, Quaternion.identity);
+            Destroy(muzzleFlashInstance, 1f);
             AudioManager.instance.PlaySFX("m1911");
             ShootRay();
             bulletsLeft--;

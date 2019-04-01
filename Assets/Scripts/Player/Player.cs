@@ -25,12 +25,14 @@ public class Player : MonoBehaviour
 
     // Components
     Animator armsAnimator;
+    Crosshair crosshair;
 
 
     private void Awake()
     {
         currentlyEquippedGun = primarySlot.weaponsInSlot[0].gameObject.GetComponentInChildren<Weapon>();
         armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
+        crosshair = FindObjectOfType<Crosshair>();
     }
 
     private void Start()
@@ -52,7 +54,18 @@ public class Player : MonoBehaviour
 
     private void HandleCurrentWeapon()
     {
-        armsAnimator.SetBool("IsAiming", isAimingDownSights);
+        if (isAimingDownSights)
+        {
+            armsAnimator.SetBool("IsAiming", true);
+            crosshair.ToggleCrosshair(false);
+        }
+        else if (!isAimingDownSights)
+        {
+            armsAnimator.SetBool("IsAiming", false);
+            crosshair.ToggleCrosshair(true);
+        }
+
+
 
         if (InputManager.instance.Shoot > 0) OnTriggerHold();
         if (InputManager.instance.Shoot <= 0) OnTriggerReleased();
@@ -107,4 +120,5 @@ public class WeaponSlot
     public Transform slot;
     public List<GameObject> weaponsInSlot;
     public int weaponIndex;
+    public int maxGuns;
 }

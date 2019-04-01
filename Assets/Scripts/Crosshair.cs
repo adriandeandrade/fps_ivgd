@@ -33,4 +33,9 @@ public class Crosshair : MonoBehaviour
         Vector2 targetSize = Vector2.Lerp(reticle.sizeDelta, new Vector2(currentReticleSize, currentReticleSize), speed * Time.deltaTime);
         reticle.sizeDelta = targetSize;
     }
+
+    public void ToggleCrosshair(bool show)
+    {
+        reticle.gameObject.SetActive(show);
+    }
 }
