@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
 
     private void SwitchWeapon()
     {
-        if (Input.GetButtonDown(InputManager.instance.switchWeaponButtonName))
+        if (Input.GetButtonDown(InputManager.instance.switchWeaponButtonName) && !isAimingDownSights)
         {
             if (isReloading)
             {
@@ -118,7 +118,48 @@ public class Player : MonoBehaviour
 public class WeaponSlot
 {
     public Transform slot;
+    public Weapon currentlySelectedWeaponInSlot;
     public List<GameObject> weaponsInSlot;
     public int weaponIndex;
     public int maxGuns;
+
+    public void SwitchGun()
+    {
+        if (weaponsInSlot.Count < 1) return;
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if(weaponIndex + 1 <= weaponsInSlot.Count)
+            {
+                weaponIndex = 0;
+            }
+
+            weaponIndex++;
+        }
+    }
+
+    public void AddGunToSlot(GameObject gunToAdd)
+    {
+        if(weaponsInSlot.Count >= maxGuns)
+        {
+            ReplaceGunInSlot(gunToAdd);
+            return;
+        }
+
+        foreach (GameObject weapon in weaponsInSlot)
+        {
+            if(gunToAdd == weapon)
+            {
+                Debug.Log("Gun Already exists");
+            } else
+            {
+                weaponsInSlot.Add(gunToAdd);
+            }
+        }
+    }
+
+    public void ReplaceGunInSlot(GameObject gunToAdd)
+    {
+
+    }
 }
