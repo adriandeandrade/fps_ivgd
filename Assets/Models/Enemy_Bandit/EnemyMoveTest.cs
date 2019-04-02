@@ -7,6 +7,7 @@ public class EnemyMoveTest : MonoBehaviour
     Animator anim;
 
     public float movespeed;
+    public bool isShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,13 @@ public class EnemyMoveTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("Speed", movespeed);
+        if (!isShoot)
+        {
+            anim.SetBool("IsShooting", false);
+            anim.SetFloat("Speed", movespeed);
+        }
+
+        if (isShoot)
+            anim.SetBool("IsShooting", true);
     }
 }
