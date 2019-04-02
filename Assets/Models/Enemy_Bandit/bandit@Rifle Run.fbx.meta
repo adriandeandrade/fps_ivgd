@@ -91,10 +91,15 @@ ModelImporter:
     400084: //RootNode
     2100000: lambert1
     4300000: bandit:headusOBJexport
-    7400000: mixamo.com
+    7400000: Bandit Run
     9500000: //RootNode
     13700000: bandit:headusOBJexport
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 5109e2c8fbd5ddb458e3157da2e9d390, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -114,14 +119,42 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Bandit Run
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -157,11 +190,498 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
-    human: []
-    skeleton: []
+    human:
+    - boneName: bandit:Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftHandThumb1
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftHandThumb2
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftHandThumb3
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightHandThumb1
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightHandThumb2
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightHandThumb3
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bandit:Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: bandit(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:headusOBJexport
+      parentName: bandit(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: bandit:Hips
+      parentName: bandit(Clone)
+      position: {x: 0.000023848148, y: 0.9909784, z: 0.004109017}
+      rotation: {x: -0.0000010865461, y: 0.0000053336857, z: -0.00016282657, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftUpLeg
+      parentName: bandit:Hips
+      position: {x: -0.10494181, y: -0.063990176, z: -0.0038369074}
+      rotation: {x: -0.0010946182, y: 0.052273918, z: 0.9986271, w: 0.0031873176}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftLeg
+      parentName: bandit:LeftUpLeg
+      position: {x: -0, y: 0.44183445, z: 0}
+      rotation: {x: -0.15393084, y: -0.000891688, z: 0.0073945527, w: 0.98805356}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftFoot
+      parentName: bandit:LeftLeg
+      position: {x: -5.551115e-17, y: 0.35686368, z: 3.469447e-18}
+      rotation: {x: 0.48957148, y: -0.08361908, z: 0.0281985, w: 0.86748636}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftToeBase
+      parentName: bandit:LeftFoot
+      position: {x: -0, y: 0.20360556, z: 1.3877788e-17}
+      rotation: {x: 0.36849838, y: -0.090517156, z: 0.03607914, w: 0.9245074}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftToe_End
+      parentName: bandit:LeftToeBase
+      position: {x: -0, y: 0.08524257, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightUpLeg
+      parentName: bandit:Hips
+      position: {x: 0.10494181, y: -0.063990176, z: -0.0052073523}
+      rotation: {x: 0.0012418758, y: 0.052499536, z: 0.9986141, w: -0.0034933593}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightLeg
+      parentName: bandit:RightUpLeg
+      position: {x: 6.938894e-18, y: 0.4419892, z: 2.7755576e-17}
+      rotation: {x: -0.15261973, y: 0.00089577306, z: -0.0073400475, w: 0.98825735}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightFoot
+      parentName: bandit:RightLeg
+      position: {x: -6.938894e-18, y: 0.35642084, z: 2.0816682e-17}
+      rotation: {x: 0.4800478, y: 0.08668806, z: -0.028861692, w: 0.8724714}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightToeBase
+      parentName: bandit:RightFoot
+      position: {x: -0, y: 0.19967388, z: 0}
+      rotation: {x: 0.37659442, y: 0.083836995, z: -0.034245733, w: 0.92194104}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightToe_End
+      parentName: bandit:RightToeBase
+      position: {x: -0, y: 0.085577294, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:Spine
+      parentName: bandit:Hips
+      position: {x: -0, y: 0.11528307, z: -0.0027339458}
+      rotation: {x: -0.011853911, y: -0.0000072635785, z: 0.00016275192, w: 0.9999298}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:Spine1
+      parentName: bandit:Spine
+      position: {x: -0, y: 0.13453475, z: 0}
+      rotation: {x: 4.0032833e-26, y: -5.879239e-14, z: 6.8091865e-13, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:Spine2
+      parentName: bandit:Spine1
+      position: {x: -0, y: 0.15375394, z: 0}
+      rotation: {x: 0, y: -0, z: -2.682127e-29, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftShoulder
+      parentName: bandit:Spine2
+      position: {x: -0.0753222, y: 0.15210892, z: -0.0006860457}
+      rotation: {x: 0.50335085, y: -0.49583846, z: 0.5055689, w: 0.49515876}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftArm
+      parentName: bandit:LeftShoulder
+      position: {x: -0, y: 0.15554515, z: 2.220446e-16}
+      rotation: {x: -0.008967317, y: -0.009794212, z: -0.0013682166, w: 0.9999109}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftForeArm
+      parentName: bandit:LeftArm
+      position: {x: -0, y: 0.36524096, z: 2.220446e-16}
+      rotation: {x: -0.00000003222686, y: -0.5298138, z: -0.0000001580316, w: 0.84811395}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftHand
+      parentName: bandit:LeftForeArm
+      position: {x: -5.551115e-17, y: 0.29758555, z: 0}
+      rotation: {x: 0.00000014528956, y: 0.5819528, z: -0.00000030184484, w: 0.8132226}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftHandIndex1
+      parentName: bandit:LeftHand
+      position: {x: 1.110223e-16, y: 0.04392192, z: -0.00000005228017}
+      rotation: {x: -0.0000056746917, y: -0.0022421689, z: 0.0026039085, w: 0.9999941}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftHandIndex2
+      parentName: bandit:LeftHandIndex1
+      position: {x: 0.0002578022, y: 0.057621073, z: 0}
+      rotation: {x: 0.00000041786157, y: -0.00004880098, z: -0.0057553067, w: 0.99998343}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftHandIndex3
+      parentName: bandit:LeftHandIndex2
+      position: {x: -0.0003008348, y: 0.047564603, z: 5.551115e-17}
+      rotation: {x: -0.00000070859073, y: 0.00019926394, z: 0.00315112, w: 0.99999505}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftHandIndex4
+      parentName: bandit:LeftHandIndex3
+      position: {x: 0.000043032607, y: 0.03274678, z: -5.551115e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftHandThumb1
+      parentName: bandit:LeftHand
+      position: {x: 0.039570954, y: 0.036980916, z: -0.000000056421563}
+      rotation: {x: 0.09168074, y: -0.05705847, z: -0.18466987, w: 0.97685003}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftHandThumb2
+      parentName: bandit:LeftHandThumb1
+      position: {x: 0.013981183, y: 0.041011427, z: -1.110223e-16}
+      rotation: {x: 0.001377645, y: 0.007997333, z: -0.15774825, w: 0.987446}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftHandThumb3
+      parentName: bandit:LeftHandThumb2
+      position: {x: 0.0006449229, y: 0.04908407, z: -5.551115e-17}
+      rotation: {x: -0.0010344068, y: 0.0054367986, z: -0.19887643, w: 0.98000896}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:LeftHandThumb4
+      parentName: bandit:LeftHandThumb3
+      position: {x: -0.014626106, y: 0.035738084, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:Neck
+      parentName: bandit:Spine2
+      position: {x: -0, y: 0.17297314, z: 0.0000000017333333}
+      rotation: {x: 0.011855045, y: 2.7745812e-20, z: -5.388497e-20, w: 0.9999297}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:Head
+      parentName: bandit:Neck
+      position: {x: -0, y: 0.10395491, z: 0.015991502}
+      rotation: {x: 0, y: -0, z: -4.6844883e-37, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:HeadTop_End
+      parentName: bandit:Head
+      position: {x: -0, y: 0.3959384, z: 0.06090767}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightShoulder
+      parentName: bandit:Spine2
+      position: {x: 0.0753222, y: 0.15209985, z: -0.00030375208}
+      rotation: {x: 0.5049549, y: 0.49489564, z: -0.5040488, w: 0.4960178}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightArm
+      parentName: bandit:RightShoulder
+      position: {x: -0, y: 0.15554513, z: 0}
+      rotation: {x: -0.009029353, y: 0.014519001, z: -0.001144032, w: 0.9998532}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightForeArm
+      parentName: bandit:RightArm
+      position: {x: -0, y: 0.36524037, z: -1.110223e-16}
+      rotation: {x: 0.00000022166232, y: 0.520314, z: 0.0000002467065, w: 0.85397506}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightHand
+      parentName: bandit:RightForeArm
+      position: {x: 2.7755576e-17, y: 0.29761142, z: 0}
+      rotation: {x: 0.00000026732647, y: -0.58214885, z: -0.0000000072933446, w: 0.8130822}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightHandIndex1
+      parentName: bandit:RightHand
+      position: {x: -0, y: 0.045031536, z: -0.000000012730135}
+      rotation: {x: -0.000033445885, y: -0.010823855, z: 0.003067003, w: 0.99993676}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightHandIndex2
+      parentName: bandit:RightHandIndex1
+      position: {x: 0.00034503214, y: 0.04894688, z: -5.551115e-17}
+      rotation: {x: -0.000000038740243, y: 0.000030373063, z: -0.006750674, w: 0.99997723}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightHandIndex3
+      parentName: bandit:RightHandIndex2
+      position: {x: -0.0003668429, y: 0.054277133, z: 0}
+      rotation: {x: 0.000000588576, y: -0.00013570566, z: 0.0036832346, w: 0.9999932}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightHandIndex4
+      parentName: bandit:RightHandIndex3
+      position: {x: 0.000021810773, y: 0.03889603, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightHandThumb1
+      parentName: bandit:RightHand
+      position: {x: -0.024708482, y: 0.05164432, z: -0.000000009197736}
+      rotation: {x: 0.119216576, y: 0.018590478, z: 0.14551511, w: 0.981971}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightHandThumb2
+      parentName: bandit:RightHandThumb1
+      position: {x: -0.017459594, y: 0.04234214, z: 0}
+      rotation: {x: 0.001892025, y: -0.0084972475, z: 0.1723156, w: 0.98500335}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightHandThumb3
+      parentName: bandit:RightHandThumb2
+      position: {x: -0.0021576954, y: 0.047931243, z: 2.7755576e-17}
+      rotation: {x: 0.0000694205, y: 0.00027192925, z: 0.29202434, w: 0.9564109}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bandit:RightHandThumb4
+      parentName: bandit:RightHandThumb3
+      position: {x: 0.01961729, y: 0.032174885, z: 2.7755576e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -171,10 +691,11 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 509e4d4a6db29eb40af60c9cee0cbdfa,
+    type: 3}
+  animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
