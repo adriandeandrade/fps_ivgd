@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: af9363bce60b92b48a7c01b5176fd17a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: bandit:Head
+    100002: bandit:HeadTop_End
+    100004: bandit:headusOBJexport
+    100006: bandit:Hips
+    100008: bandit:LeftArm
+    100010: bandit:LeftFoot
+    100012: bandit:LeftForeArm
+    100014: bandit:LeftHand
+    100016: bandit:LeftHandIndex1
+    100018: bandit:LeftHandIndex2
+    100020: bandit:LeftHandIndex3
+    100022: bandit:LeftHandIndex4
+    100024: bandit:LeftHandThumb1
+    100026: bandit:LeftHandThumb2
+    100028: bandit:LeftHandThumb3
+    100030: bandit:LeftHandThumb4
+    100032: bandit:LeftLeg
+    100034: bandit:LeftShoulder
+    100036: bandit:LeftToe_End
+    100038: bandit:LeftToeBase
+    100040: bandit:LeftUpLeg
+    100042: bandit:Neck
+    100044: bandit:RightArm
+    100046: bandit:RightFoot
+    100048: bandit:RightForeArm
+    100050: bandit:RightHand
+    100052: bandit:RightHandIndex1
+    100054: bandit:RightHandIndex2
+    100056: bandit:RightHandIndex3
+    100058: bandit:RightHandIndex4
+    100060: bandit:RightHandThumb1
+    100062: bandit:RightHandThumb2
+    100064: bandit:RightHandThumb3
+    100066: bandit:RightHandThumb4
+    100068: bandit:RightLeg
+    100070: bandit:RightShoulder
+    100072: bandit:RightToe_End
+    100074: bandit:RightToeBase
+    100076: bandit:RightUpLeg
+    100078: bandit:Spine
+    100080: bandit:Spine1
+    100082: bandit:Spine2
+    100084: //RootNode
+    400000: bandit:Head
+    400002: bandit:HeadTop_End
+    400004: bandit:headusOBJexport
+    400006: bandit:Hips
+    400008: bandit:LeftArm
+    400010: bandit:LeftFoot
+    400012: bandit:LeftForeArm
+    400014: bandit:LeftHand
+    400016: bandit:LeftHandIndex1
+    400018: bandit:LeftHandIndex2
+    400020: bandit:LeftHandIndex3
+    400022: bandit:LeftHandIndex4
+    400024: bandit:LeftHandThumb1
+    400026: bandit:LeftHandThumb2
+    400028: bandit:LeftHandThumb3
+    400030: bandit:LeftHandThumb4
+    400032: bandit:LeftLeg
+    400034: bandit:LeftShoulder
+    400036: bandit:LeftToe_End
+    400038: bandit:LeftToeBase
+    400040: bandit:LeftUpLeg
+    400042: bandit:Neck
+    400044: bandit:RightArm
+    400046: bandit:RightFoot
+    400048: bandit:RightForeArm
+    400050: bandit:RightHand
+    400052: bandit:RightHandIndex1
+    400054: bandit:RightHandIndex2
+    400056: bandit:RightHandIndex3
+    400058: bandit:RightHandIndex4
+    400060: bandit:RightHandThumb1
+    400062: bandit:RightHandThumb2
+    400064: bandit:RightHandThumb3
+    400066: bandit:RightHandThumb4
+    400068: bandit:RightLeg
+    400070: bandit:RightShoulder
+    400072: bandit:RightToe_End
+    400074: bandit:RightToeBase
+    400076: bandit:RightUpLeg
+    400078: bandit:Spine
+    400080: bandit:Spine1
+    400082: bandit:Spine2
+    400084: //RootNode
+    2100000: lambert1
+    4300000: bandit:headusOBJexport
+    7400000: mixamo.com
+    9500000: //RootNode
+    13700000: bandit:headusOBJexport
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
