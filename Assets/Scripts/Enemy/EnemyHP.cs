@@ -5,11 +5,10 @@ using UnityEngine;
 public class EnemyHP : MonoBehaviour
 {
     public float enemyHealth;
-    EnemyAI enemyAI;
 
     void Start()
     {
-        enemyAI = GetComponent<EnemyAI>();
+        
     }
 
     public void DeductHealth(float deductHealth)

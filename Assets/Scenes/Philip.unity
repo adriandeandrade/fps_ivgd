@@ -2448,6 +2448,7 @@ GameObject:
   - component: {fileID: 784864968}
   - component: {fileID: 784864974}
   - component: {fileID: 784864973}
+  - component: {fileID: 784864967}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2455,6 +2456,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &784864967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784864966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593fffe50f047ae44b25c1d02521665e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 0
+  canAttackDistance: 20
+  forgetTime: 3
+  currentState: 0
 --- !u!195 &784864968
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2469,7 +2486,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 60
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2575,8 +2592,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a7a81810f2d3649bc23a6a1e91896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 25
-  viewAngle: 100
+  viewAngle: 120
+  viewRadius: 17.9
+  meshResolution: 1
+  edgeDstThreshold: 0.5
+  edgeResolveIterations: 4
   targetMask:
     serializedVersion: 2
     m_Bits: 512
@@ -2584,9 +2604,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   visibleTargets: []
-  meshResolution: 1
-  edgeResolveIterations: 4
-  edgeDstThreshold: 0.5
   viewMeshFilter: {fileID: 1374602261}
 --- !u!1 &813594090
 GameObject:

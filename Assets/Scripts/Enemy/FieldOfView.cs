@@ -5,49 +5,27 @@ using UnityEngine.AI;
 
 public class FieldOfView : MonoBehaviour
 {
-    EnemyAI enemyAI;
-
-    Transform target;
-    NavMeshAgent agent;
-    Animator anim;
-    //public float maxSight;
-
-    public float viewRadius;
     [Range(0, 306)]
     public float viewAngle;
-    bool inRange = false;
-    bool inSight = false;
-    bool hasLastPosition = false;
-    Vector3 lastKnownPos;
+    public float viewRadius;
+    public float meshResolution;
+    public float edgeDstThreshold;
+    public int edgeResolveIterations;
 
     public LayerMask targetMask;
     public LayerMask obstacleMask;
 
-    [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
-
-    public float meshResolution;
-    public int edgeResolveIterations;
-    public float edgeDstThreshold;
-
     public MeshFilter viewMeshFilter;
-    Mesh viewMesh;
 
-    private void Awake()
-    {
-        enemyAI = GetComponent<EnemyAI>();
-    }
+    Mesh viewMesh;
 
     private void Start()
     {
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
-
         StartCoroutine("FindTargetsWithDelay", .2f);
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
@@ -62,29 +40,26 @@ public class FieldOfView : MonoBehaviour
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
-        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
+        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask); // Get colliders within fov
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
             Vector3 dirToTarget = (target.position - transform.position).normalized;
 
-            if(Vector3.Angle (transform.forward, dirToTarget) < viewAngle / 2)
+            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2) // Check if target is within fov
             {
                 float dstToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
+                if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)) // If we see the target.
                 {
                     visibleTargets.Add(target);
-                    inRange = true;
-                    inSight = true;
-                }
-                else if(Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask) && !hasLastPosition)
+                    // We know if we can see the target.
+                    Debug.Log("In view");
+                } else
                 {
-                    lastKnownPos = target.position;
-                    inRange = false;
-                    inSight = false;
-                    hasLastPosition = true;
+                    // If we cant see the target;
+                    Debug.Log("No longer in view");
                 }
             }
         }
@@ -97,7 +72,7 @@ public class FieldOfView : MonoBehaviour
         List<Vector3> viewPoints = new List<Vector3>();
         ViewCastInfo oldViewCast = new ViewCastInfo();
 
-        for(int i = 0; i <= stepCount; i++)
+        for (int i = 0; i <= stepCount; i++)
         {
             float angle = transform.eulerAngles.y - viewAngle / 2 + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(angle);
@@ -106,11 +81,11 @@ public class FieldOfView : MonoBehaviour
             {
                 bool edgeDstThresholdExceeded = Mathf.Abs(oldViewCast.dst - newViewCast.dst) > edgeDstThreshold;
 
-                if(oldViewCast.hit != newViewCast.hit || (oldViewCast.hit && newViewCast.hit && edgeDstThresholdExceeded))
+                if (oldViewCast.hit != newViewCast.hit || (oldViewCast.hit && newViewCast.hit && edgeDstThresholdExceeded))
                 {
                     EdgeInfo edge = FindEdge(oldViewCast, newViewCast);
 
-                    if(edge.pointA != Vector3.zero)
+                    if (edge.pointA != Vector3.zero)
                     {
                         viewPoints.Add(edge.pointA);
                     }
@@ -130,8 +105,8 @@ public class FieldOfView : MonoBehaviour
         int[] triangles = new int[(vertexCount - 2) * 3];
 
         vertices[0] = Vector3.zero;
-        
-        for(int i = 0; i < vertexCount - 1; i++)
+
+        for (int i = 0; i < vertexCount - 1; i++)
         {
             vertices[i + 1] = transform.InverseTransformPoint(viewPoints[i]);
 
@@ -156,7 +131,7 @@ public class FieldOfView : MonoBehaviour
         Vector3 minPoint = Vector3.zero;
         Vector3 maxPoint = Vector3.zero;
 
-        for(int i = 0; i < edgeResolveIterations; i++)
+        for (int i = 0; i < edgeResolveIterations; i++)
         {
             float angle = (minAngle + maxAngle) / 2;
             ViewCastInfo newViewCast = ViewCast(angle);
@@ -191,21 +166,22 @@ public class FieldOfView : MonoBehaviour
     {
         DrawFieldOFView();
 
-        if (inRange)
-        {
-            float distance = Vector3.Distance(transform.position, target.position);
-            agent.updatePosition = true;
-            agent.SetDestination(target.position);
-        }
-        else if(hasLastPosition)
-        {
-            agent.updatePosition = true;
-            agent.SetDestination(lastKnownPos);
-        }
-        else
-        {
-            agent.updatePosition = false;
-        }
+        //if (inSight)
+        //{
+        //    float distance = Vector3.Distance(transform.position, target.position);
+        //    agent.updatePosition = true;
+        //    agent.SetDestination(target.position);
+        //}
+        //else if (hasLastPosition)
+        //{
+        //    agent.updatePosition = true;
+        //    hasLastPosition = false;
+        //    agent.SetDestination(lastKnownPos);
+        //}
+        //else
+        //{
+        //    agent.updatePosition = false;
+        //}
     }
 
     ViewCastInfo ViewCast(float globalAngle)
@@ -213,7 +189,7 @@ public class FieldOfView : MonoBehaviour
         Vector3 dir = DirFromAngle(globalAngle, true);
         RaycastHit hit;
 
-        if(Physics.Raycast (transform.position, dir, out hit, viewRadius, obstacleMask))
+        if (Physics.Raycast(transform.position, dir, out hit, viewRadius, obstacleMask))
         {
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
         }
