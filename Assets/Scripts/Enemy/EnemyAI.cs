@@ -17,7 +17,6 @@ public class EnemyAI : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-
     void Update()
     {
         float distance = Vector3.Distance(transform.position, target.position);
