@@ -18,7 +18,17 @@ ModelImporter:
     4300002: Object053
     7400000: Take 001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #25'
+    second: {fileID: 2100000, guid: 725714624cf0e4440ba7e5adc2d983be, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: FW_WD_L
+    second: {fileID: 2800000, guid: 7357bb694b916c04dbca77e461807328, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

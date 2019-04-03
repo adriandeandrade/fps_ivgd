@@ -11,7 +11,17 @@ ModelImporter:
     4300000: bench_01
     7400000: Take 001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #25'
+    second: {fileID: 2100000, guid: 75b4f664e86930c4d817060a6a64efd9, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bench_wood_weathered_color
+    second: {fileID: 2800000, guid: 50b22c77c83f9434c8bb71c866882d2b, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
