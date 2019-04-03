@@ -24,9 +24,11 @@ public class Enemy : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
     FieldOfView fov;
+    EnemyPatrol patrol;
 
     private void Awake()
     {
+        patrol = GetComponent<EnemyPatrol>();
         agent = GetComponent<NavMeshAgent>();
         fov = GetComponent<FieldOfView>();
         hasTarget = false;
