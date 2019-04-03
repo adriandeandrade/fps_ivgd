@@ -143,25 +143,11 @@ public class PlayerMotor : MonoBehaviour
         {
             Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, closeToWallArmPosition, avoidWallsArmSpeed * Time.deltaTime);
             armsT.localPosition = targetPosition;
-            //StartCoroutine(AvoidWalls(closeToWallArmPosition, true));
         }
         else
         {
             Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, originalWeaponPosition, avoidWallsArmSpeed * Time.deltaTime);
             armsT.localPosition = targetPosition;
-            //StartCoroutine(AvoidWalls(originalWeaponPosition, false));
-        }
-    }
-
-    private IEnumerator AvoidWalls(Vector3 targetPosition, bool hittingWall)
-    {
-        float duration = 0.1f;
-
-        for (float t = 0f; t < duration; t += Time.deltaTime)
-        {
-            Vector3 targetPos = Vector3.Lerp(armsT.localPosition, targetPosition, t / duration);
-            armsT.localPosition = targetPos;
-            yield return new WaitForEndOfFrame();
         }
     }
 

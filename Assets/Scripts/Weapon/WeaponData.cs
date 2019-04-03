@@ -6,10 +6,12 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
     public FireTypes fireType;
+    public WeaponType weaponType;
     public int magazineCapacity;
     public int burstCount;
     public float fireRate;
     public float fireRange;
     public float reloadTime;
     public string weaponName;
+    public GameObject weaponArms;
 }

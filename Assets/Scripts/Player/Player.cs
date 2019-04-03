@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
         isReloading = false;
         isAimingDownSights = false;
         currentSlot = primarySlot;
+
+        primarySlot.currentWeapon = primarySlot.weaponsInSlot[0];
     }
 
     private void Update()
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
             HandleCurrentWeapon();
         }
 
+        currentSlot.SwitchWeaponInSlot();
         SwitchWeapon();
     }
 
@@ -86,7 +89,7 @@ public class Player : MonoBehaviour
 
     private void SwitchWeapon()
     {
-        if (Input.GetButtonDown(InputManager.instance.switchWeaponButtonName))
+        if (Input.GetButtonDown(InputManager.instance.switchWeaponButtonName) && !isAimingDownSights)
         {
             if (isReloading)
             {
@@ -98,7 +101,7 @@ public class Player : MonoBehaviour
                 primarySlot.slot.gameObject.SetActive(false);
                 secondarySlot.slot.gameObject.SetActive(true);
                 currentSlot = secondarySlot;
-                currentlyEquippedGun = secondarySlot.weaponsInSlot[0].gameObject.GetComponentInChildren<Weapon>();
+                currentlyEquippedGun = secondarySlot.weaponsInSlot[secondarySlot.weaponIndex].gameObject.GetComponentInChildren<Weapon>();
                 armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
             }
             else if (currentSlot == secondarySlot)
@@ -106,19 +109,109 @@ public class Player : MonoBehaviour
                 secondarySlot.slot.gameObject.SetActive(false);
                 primarySlot.slot.gameObject.SetActive(true);
                 currentSlot = primarySlot;
-                currentlyEquippedGun = primarySlot.weaponsInSlot[0].gameObject.GetComponentInChildren<Weapon>();
+                currentlyEquippedGun = primarySlot.weaponsInSlot[primarySlot.weaponIndex].gameObject.GetComponentInChildren<Weapon>();
                 armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
             }
         }
     }
 
+    private void SwitchSlot()
+    {
+        if (!isAimingDownSights)
+        {
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                if (isReloading)
+                {
+                    currentlyEquippedGun.CancelReload();
+                }
+
+                currentSlot.SwitchWeaponInSlot();
+                UpdatePlayer();
+            }
+        }
+    }
+
+    private void UpdatePlayer()
+    {
+        currentlyEquippedGun = currentSlot.currentlySelectedWeaponInSlot;
+        armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
+    }
+
+    public void AddWeapon(WeaponData weaponToAdd)
+    {
+        WeaponSlot slot = weaponToAdd.weaponType == WeaponType.PRIMARY ? primarySlot : secondarySlot;
+        if (!slot.CheckWeaponExists(weaponToAdd.weaponArms))
+        {
+            if(slot.CanAddWeapon())
+            {
+                GameObject newWeapon = Instantiate(weaponToAdd.weaponArms, primarySlot.slot);
+                newWeapon.SetActive(false);
+                slot.AddWeaponToSlot(newWeapon);
+            } else
+            {
+                Debug.Log("Cant add weapon.");
+            }
+        }
+    }
 }
 
 [System.Serializable]
 public class WeaponSlot
 {
+    [SerializeField] private Player player;
     public Transform slot;
+    public GameObject currentWeapon;
+    public Weapon currentlySelectedWeaponInSlot;
     public List<GameObject> weaponsInSlot;
     public int weaponIndex;
     public int maxGuns;
+
+    public void SwitchWeaponInSlot()
+    {
+        if (weaponsInSlot.Count <= 1) return; // Returns if we dont have more than one weapon in the slot.
+
+        currentWeapon.gameObject.SetActive(false);
+
+        if (weaponIndex >= weaponsInSlot.Count - 1)
+        {
+            weaponIndex = 0;
+        }
+        else
+        {
+            weaponIndex++;
+        }
+
+        currentWeapon = weaponsInSlot[weaponIndex].gameObject;
+        player.CurrentlyEquippedGun = currentWeapon.gameObject.GetComponentInChildren<Weapon>();
+        currentWeapon.gameObject.SetActive(true);
+        //currentlySelectedWeaponInSlot.gameObject.SetActive(true);
+
+        
+    }
+
+    public bool CheckWeaponExists(GameObject weaponToCheck)
+    {
+        foreach (GameObject weapon in weaponsInSlot)
+        {
+            if (weaponToCheck == weapon) return true;
+        }
+
+        return false;
+    }
+
+    public bool CanAddWeapon()
+    {
+        if (weaponsInSlot.Count >= maxGuns)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void AddWeaponToSlot(GameObject gunToAdd)
+    {
+        weaponsInSlot.Add(gunToAdd);
+    }
 }
