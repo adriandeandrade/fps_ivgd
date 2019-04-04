@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject debugItem;
     [SerializeField] private GameObject shellPrefab;
     [SerializeField] private GameObject muzzleFlash;
+    [SerializeField] private GameObject bloodEffectPrefab;
     [SerializeField] private Transform shellEjection;
     [SerializeField] private Transform muzzle;
     [SerializeField] private LayerMask ignoreMask;
@@ -159,6 +160,9 @@ public class Weapon : MonoBehaviour
 
             if(enemy != null)
             {
+                Vector3 hitPoint = hit.point;
+                GameObject bloodEffect = Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
+                Destroy(bloodEffect, 2f);
                 enemy.DeductHealth(2f);
             }
         }

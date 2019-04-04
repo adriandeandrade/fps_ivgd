@@ -26,5 +26,16 @@ public class EnemyMoveTest : MonoBehaviour
 
         if (isShoot)
             anim.SetBool("IsShooting", true);
+
+        if (movespeed > 0.01f)
+        {
+            StartCoroutine(playFootStep());
+        }
+    }
+
+    IEnumerator playFootStep()
+    {
+        FindObjectOfType<AudioManager>().PlaySFX("footstep");
+        yield return new WaitForSeconds(1);
     }
 }

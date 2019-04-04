@@ -98,7 +98,6 @@ public class Enemy : MonoBehaviour
         {
             hasTarget = true;
             target = fov.visibleTargets[0];
-            Debug.Log("Has Target");
         }
         else
         {

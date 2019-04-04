@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movespeed: 0
+  isShoot: 0
 --- !u!1001 &95365432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4074,6 +4075,9 @@ MonoBehaviour:
   sfx:
   - name: m1911
     clip: {fileID: 8300000, guid: c4483ee2c28d0724ea50e3233d8ba6a2, type: 3}
+    source: {fileID: 0}
+  - name: footstep
+    clip: {fileID: 8300000, guid: ce80c214440f77445aa07477218ea353, type: 3}
     source: {fileID: 0}
   bgm: []
 --- !u!4 &1356184663
