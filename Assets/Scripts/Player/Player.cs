@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
     public Animator ArmsAnimator { get { return armsAnimator; } private set { } }
     public bool IsReloading { get { return isReloading; } set { isReloading = value; } }
     public bool IsAimingDownSights { get { return isAimingDownSights; } set { isAimingDownSights = value; } }
-
     public bool TriggerReleasedSinceLastShot { get => triggerReleasedSinceLastShot; set => triggerReleasedSinceLastShot = value; }
 
     // Components
@@ -40,8 +39,6 @@ public class Player : MonoBehaviour
         isReloading = false;
         isAimingDownSights = false;
         currentSlot = primarySlot;
-
-        primarySlot.currentWeapon = primarySlot.weaponsInSlot[0];
     }
 
     private void Update()
@@ -51,8 +48,7 @@ public class Player : MonoBehaviour
             HandleCurrentWeapon();
         }
 
-        currentSlot.SwitchWeaponInSlot();
-        SwitchWeapon();
+        CycleInventory();
     }
 
     private void HandleCurrentWeapon()
@@ -67,8 +63,6 @@ public class Player : MonoBehaviour
             armsAnimator.SetBool("IsAiming", false);
             crosshair.ToggleCrosshair(true);
         }
-
-
 
         if (InputManager.instance.Shoot > 0) OnTriggerHold();
         if (InputManager.instance.Shoot <= 0) OnTriggerReleased();
@@ -87,73 +81,51 @@ public class Player : MonoBehaviour
         currentlyEquippedGun.ResetBurst();
     }
 
-    private void SwitchWeapon()
+    public void CycleInventory()
     {
-        if (Input.GetButtonDown(InputManager.instance.switchWeaponButtonName) && !isAimingDownSights)
+        if(Input.GetButtonDown(InputManager.instance.cyclePrimaryButtonName))
         {
-            if (isReloading)
+            if (InputManager.instance.CheckDoubleTap(InputManager.instance.cyclePrimaryButtonName))
             {
-                currentlyEquippedGun.CancelReload();
+                CycleSlot();
+                return;
             }
-
-            if (currentSlot == primarySlot)
+            else
             {
-                primarySlot.slot.gameObject.SetActive(false);
-                secondarySlot.slot.gameObject.SetActive(true);
-                currentSlot = secondarySlot;
-                currentlyEquippedGun = secondarySlot.weaponsInSlot[secondarySlot.weaponIndex].gameObject.GetComponentInChildren<Weapon>();
-                armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
-            }
-            else if (currentSlot == secondarySlot)
-            {
-                secondarySlot.slot.gameObject.SetActive(false);
-                primarySlot.slot.gameObject.SetActive(true);
-                currentSlot = primarySlot;
-                currentlyEquippedGun = primarySlot.weaponsInSlot[primarySlot.weaponIndex].gameObject.GetComponentInChildren<Weapon>();
-                armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
-            }
-        }
-    }
-
-    private void SwitchSlot()
-    {
-        if (!isAimingDownSights)
-        {
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                if (isReloading)
+                if (currentSlot == primarySlot)
                 {
-                    currentlyEquippedGun.CancelReload();
+                    // Switch to Secondary Guns
+                    currentSlot = secondarySlot;
+                    primarySlot.slot.gameObject.SetActive(false);
+                    secondarySlot.slot.gameObject.SetActive(true);
+                    Debug.Log("Switched To Secondary");
                 }
-
-                currentSlot.SwitchWeaponInSlot();
-                UpdatePlayer();
+                else if (currentSlot == secondarySlot)
+                {
+                    // Switch to Primary Guns
+                    currentSlot = primarySlot;
+                    primarySlot.slot.gameObject.SetActive(true);
+                    secondarySlot.slot.gameObject.SetActive(false);
+                    Debug.Log("Switched To Primary");
+                }
             }
         }
     }
 
-    private void UpdatePlayer()
+    public void CycleSlot()
     {
-        currentlyEquippedGun = currentSlot.currentlySelectedWeaponInSlot;
-        armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
+        //if (currentSlot == primarySlot)
+        //{
+        //    primarySlot.SwitchWeaponInSlot();
+        //}
+        //else if (currentSlot == secondarySlot)
+        //{
+        //    secondarySlot.SwitchWeaponInSlot();
+        //}
+
+        Debug.Log("Cycled.");
     }
 
-    public void AddWeapon(WeaponData weaponToAdd)
-    {
-        WeaponSlot slot = weaponToAdd.weaponType == WeaponType.PRIMARY ? primarySlot : secondarySlot;
-        if (!slot.CheckWeaponExists(weaponToAdd.weaponArms))
-        {
-            if(slot.CanAddWeapon())
-            {
-                GameObject newWeapon = Instantiate(weaponToAdd.weaponArms, primarySlot.slot);
-                newWeapon.SetActive(false);
-                slot.AddWeaponToSlot(newWeapon);
-            } else
-            {
-                Debug.Log("Cant add weapon.");
-            }
-        }
-    }
 }
 
 [System.Serializable]
@@ -187,7 +159,7 @@ public class WeaponSlot
         currentWeapon.gameObject.SetActive(true);
         //currentlySelectedWeaponInSlot.gameObject.SetActive(true);
 
-        
+
     }
 
     public bool CheckWeaponExists(GameObject weaponToCheck)

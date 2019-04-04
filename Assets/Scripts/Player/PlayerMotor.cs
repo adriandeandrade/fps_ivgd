@@ -18,7 +18,9 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private bool avoidWalls;
     [SerializeField] private Transform cam2;
     [SerializeField] private Transform armsT;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private MouseLook mouseLook;
+    [SerializeField] private LayerMask groundMask;
     [SerializeField] private KeyCode sprintKey;
 
     [SerializeField] private Vector3 closeToWallArmPosition;
@@ -31,6 +33,7 @@ public class PlayerMotor : MonoBehaviour
     public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
     public bool IsHittingWall { get { return isHittingWall; } set { isHittingWall = value; } }
     public bool CanSprint { get { return canSprint; } set { canSprint = value; } }
+    public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
 
     bool isGrounded = false;
     bool isSprinting;
@@ -39,11 +42,11 @@ public class PlayerMotor : MonoBehaviour
     bool isShooting;
     bool isHittingWall;
     bool isAiming;
-    bool canJump = true;
     bool canSprint;
 
     float horizontal;
     float vertical;
+    const float groundedRadius = 0.2f;
 
     Vector3 originalWeaponPosition;
 
@@ -81,11 +84,12 @@ public class PlayerMotor : MonoBehaviour
     void FixedUpdate()
     {
         Movement();
+        CheckForGround();
     }
 
     private void Movement()
     {
-        if (isGrounded)
+        if (IsGrounded)
         {
             // Calculate how fast we should be moving
             Vector3 targetVelocity = InputManager.instance.Movement;
@@ -108,7 +112,7 @@ public class PlayerMotor : MonoBehaviour
 
             rBody.AddForce(velocityChange, ForceMode.VelocityChange);
 
-            if (canJump && isJumping)
+            if (isJumping)
             {
                 rBody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
                 isJumping = false;
@@ -118,9 +122,21 @@ public class PlayerMotor : MonoBehaviour
         // We apply gravity manually for more tuning control
         rBody.AddForce(new Vector3(0, -gravity * rBody.mass, 0));
 
-        isGrounded = false;
-
         mouseLook.UpdateCursorLock();
+    }
+
+    private void CheckForGround()
+    {
+        IsGrounded = false;
+        Collider[] groundColliders = Physics.OverlapSphere(groundCheck.position, groundedRadius, groundMask);
+
+        for (int i = 0; i < groundColliders.Length; i++)
+        {
+            if(groundColliders[i].gameObject != this.gameObject)
+            {
+                IsGrounded = true;
+            }
+        }
     }
 
     private void HandleMovementAnimations()
@@ -159,7 +175,7 @@ public class PlayerMotor : MonoBehaviour
 
     void OnCollisionStay()
     {
-        isGrounded = true;
+        IsGrounded = true;
     }
 
     float CalculateJumpVerticalSpeed()

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &475219022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475219023}
+  m_Layer: 9
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475219023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475219022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8746395477164754860}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055028072
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +316,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3731637348113435195}
+  - {fileID: 475219023}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -342,6 +373,7 @@ MonoBehaviour:
   avoidWalls: 0
   cam2: {fileID: 3731637348113435195}
   armsT: {fileID: 5010117505780248534}
+  groundCheck: {fileID: 475219023}
   mouseLook:
     XSensitivity: 2
     YSensitivity: 2
@@ -351,6 +383,9 @@ MonoBehaviour:
     smooth: 0
     smoothTime: 5
     lockCursor: 1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 6144
   sprintKey: 0
   closeToWallArmPosition: {x: 0, y: -0.4, z: -0.35}
   startAnimTime: 0.3
@@ -368,14 +403,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primarySlot:
+    player: {fileID: 256698827847181111}
     slot: {fileID: 1055028073}
+    currentWeapon: {fileID: 0}
     currentlySelectedWeaponInSlot: {fileID: 0}
     weaponsInSlot:
     - {fileID: 5010117505779823606}
     weaponIndex: 0
     maxGuns: 2
   secondarySlot:
+    player: {fileID: 256698827847181111}
     slot: {fileID: 1961045792}
+    currentWeapon: {fileID: 0}
     currentlySelectedWeaponInSlot: {fileID: 0}
     weaponsInSlot:
     - {fileID: 2395031270342738000}
@@ -492,11 +531,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: lp_arms_ak47
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181583005926574602, guid: 039d820cd05fd464bb30eeed5222df79,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3181583005926544938, guid: 039d820cd05fd464bb30eeed5222df79,
         type: 3}

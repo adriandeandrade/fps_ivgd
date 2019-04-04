@@ -55,11 +55,9 @@ public class FieldOfView : MonoBehaviour
                 {
                     visibleTargets.Add(target);
                     // We know if we can see the target.
-                    Debug.Log("In view");
                 } else
                 {
                     // If we cant see the target;
-                    Debug.Log("No longer in view");
                 }
             }
         }

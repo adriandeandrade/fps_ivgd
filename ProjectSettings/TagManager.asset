@@ -19,9 +19,8 @@ TagManager:
   - Player
   - Pickup
   - Obstacles
-  - 
-  - 
-  - 
+  - Ground
+  - Weapon
   - 
   - 
   - 
