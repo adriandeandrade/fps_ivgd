@@ -1,0 +1,293 @@
+fileFormatVersion: 2
+guid: 11ffc6d0db36576418f2bc99fdab4c97
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cube
+    100002: Cube.007
+    100004: Cube.008
+    100006: Cube.009
+    100008: Cube.010
+    100010: //RootNode
+    400000: Cube
+    400002: Cube.007
+    400004: Cube.008
+    400006: Cube.009
+    400008: Cube.010
+    400010: //RootNode
+    2100000: mat_Walls
+    2100002: mat_WallFrame
+    2100004: mat_Road
+    2100006: mat_SideWalks
+    2100008: mat_EndBuilding_Exterior2
+    2100010: mat_EndBuilding_Foundation
+    2100012: mat_EndBuilding_Exterior1
+    2100014: mat_EndBuilding_Exterior3
+    2100016: mat_EndBuilding_Frame
+    2100018: mat_EndBuilding_Walls1
+    2100020: mat_EndBuilding_FloorCeiling
+    2100022: mat_EndBuilding_Walls2
+    2100024: mat_GasStation_Exterior1
+    2100026: mat_GasStation_Foundation
+    2100028: mat_GasStation_Exterior2
+    2100030: mat_GasStation_Exterior3
+    2100032: mat_GasStation_Frame
+    2100034: mat_GasStation_Walls
+    2100036: mat_GasStation_FloorCeiling
+    2100038: mat_GasStation_Counter
+    2100040: mat_GasStation_CounterTop
+    2100042: mat_GasStation_Pumps
+    2100044: mat_GasStation_PumpScreen
+    2100046: mat_B8_Foundation
+    2100048: mat_B8_Exterior3
+    2100050: mat_B8_Exterior2
+    2100052: mat_B8_Frame
+    2100054: mat_B8_Exterior1
+    2100056: mat_GLOBAL_Window
+    2300000: Cube
+    2300002: Cube.007
+    2300004: Cube.008
+    2300006: Cube.009
+    2300008: Cube.010
+    3300000: Cube
+    3300002: Cube.007
+    3300004: Cube.008
+    3300006: Cube.009
+    3300008: Cube.010
+    4300000: Cube
+    4300002: Cube.010
+    4300004: Cube.007
+    4300006: Cube.008
+    4300008: Cube.009
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B8_Exterior1
+    second: {fileID: 2100000, guid: 53ec4097304b012409b210ecd3023d46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B8_Exterior2
+    second: {fileID: 2100000, guid: 2bb38ffda4110554d8ae3faa72f687e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B8_Exterior3
+    second: {fileID: 2100000, guid: 9404dd7219155384f8cfe952fb0c9ff5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B8_Foundation
+    second: {fileID: 2100000, guid: 69974688477f5ff46af02b36fcead3b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_B8_Frame
+    second: {fileID: 2100000, guid: 1a6e9d773ab8b8a4980d8b275a410471, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_EndBuilding_Exterior1
+    second: {fileID: 2100000, guid: fa6095f7ab8325642b90ff93820199cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_EndBuilding_Exterior2
+    second: {fileID: 2100000, guid: 3715d73486ce59b45aa3ec5110822dc1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_EndBuilding_Exterior3
+    second: {fileID: 2100000, guid: f9c1f97600dccd54ebe59b8c57f0f442, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_EndBuilding_FloorCeiling
+    second: {fileID: 2100000, guid: 9b43704f413533e43a9124e693ab1d88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_EndBuilding_Foundation
+    second: {fileID: 2100000, guid: 67c32fe163d26514380c71e86dec6ddf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_EndBuilding_Frame
+    second: {fileID: 2100000, guid: a0851f0158135234b89a1487ae748144, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_EndBuilding_Walls1
+    second: {fileID: 2100000, guid: 86d79cabe5934424abcca8f3b4b7708b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_EndBuilding_Walls2
+    second: {fileID: 2100000, guid: 8863e968674bdd648871207be3c348df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GLOBAL_Window
+    second: {fileID: 2100000, guid: ed390b011a9a1b24a9e3ea4d964179c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_Counter
+    second: {fileID: 2100000, guid: 1323e07047470c749861f9685f906102, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_CounterTop
+    second: {fileID: 2100000, guid: b90e997a196e39e458350f5704ed1f28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_Exterior1
+    second: {fileID: 2100000, guid: df323add485daeb4cad7385eaa7e4a31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_Exterior2
+    second: {fileID: 2100000, guid: f9df4f9ddb888364faf060855ae2ccdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_Exterior3
+    second: {fileID: 2100000, guid: 8e9ef148f638953439a9e5db68fe48cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_FloorCeiling
+    second: {fileID: 2100000, guid: 1e54b258b378c2e469ef1cb6145f659a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_Foundation
+    second: {fileID: 2100000, guid: 19d54a35c93e38e4b8c5a163cd07cf0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_Frame
+    second: {fileID: 2100000, guid: 1299459c0cb663e4e808811af730e1e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_PumpScreen
+    second: {fileID: 2100000, guid: 7efc0f5f69d57ec4795b5ec4ef5da422, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_Pumps
+    second: {fileID: 2100000, guid: d3726892468441149857e6d5e4442f73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_GasStation_Walls
+    second: {fileID: 2100000, guid: 04645556637a37144867e083bc198f06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Road
+    second: {fileID: 2100000, guid: aa0a06ec8148247468011d08c921fe53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_SideWalks
+    second: {fileID: 2100000, guid: b1c0d46fbf3d5ce4e9cef48fdf5ef696, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_WallFrame
+    second: {fileID: 2100000, guid: 99475bbb451c98942a99d380d2760cc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_Walls
+    second: {fileID: 2100000, guid: 9bd18307ae24b2b49b0fe18c111b8f49, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
