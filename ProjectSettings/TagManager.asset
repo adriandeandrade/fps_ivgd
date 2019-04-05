@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Arms
   - Waypoint
+  - Pickup
   layers:
   - Default
   - TransparentFX

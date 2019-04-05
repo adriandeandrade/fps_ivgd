@@ -35,8 +35,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] public string primaryAttackButtonName;
     [SerializeField] public string reloadButton;
     [SerializeField] public string switchWeaponButtonName;
-    [SerializeField] public string cyclePrimaryButtonName;
-    [SerializeField] public string cycleSecondaryButtonName;
+    [SerializeField] public string cycleGunsInSlotButtonName;
 
     float horizontal;
     float vertical;
@@ -109,38 +108,20 @@ public class InputManager : MonoBehaviour
             player.IsAimingDownSights = false;
         }
 
-        if (Input.GetButtonDown(reloadButton))
-        {
-            player.CurrentlyEquippedGun.Reload();
-        }
-        else if (Input.GetButtonDown(reloadButton) && playerMotor.IsSprinting)
-        {
-            playerMotor.IsSprinting = false;
-            player.CurrentlyEquippedGun.Reload();
-        }
+        //if (Input.GetButtonDown(reloadButton))
+        //{
+        //    player.CurrentWeapon.Reload();
+        //}
+
+        //else if (Input.GetButtonDown(reloadButton) && playerMotor.IsSprinting)
+        //{
+        //    playerMotor.IsSprinting = false;
+        //    player.CurrentWeapon.Reload();
+        //}
     }
 
     private void InputMagnitude(Vector3 input)
     {
         inputMagnitude = new Vector2(movement.x, movement.z).sqrMagnitude;
-    }
-
-    float tapSpeed = 0.2f;
-    float lastTapTime = 0f;
-
-    public bool CheckDoubleTap(string buttonName)
-    {
-        if (Input.GetButtonDown(buttonName))
-        {
-            if ((Time.time - lastTapTime) < tapSpeed)
-            {
-                Debug.Log("Double Tapped!");
-                return true;
-            }
-
-            lastTapTime = Time.time;
-            return false;
-        }
-        return false;
     }
 }

@@ -21,6 +21,9 @@ public class Weapon : MonoBehaviour
     int bulletsLeftBeforeReload;
     int shotsRemainingInBurst;
     float nextFireTime;
+    float startAnimTime = 0.3f;
+    float stopAnimTime = 0.15f;
+    bool triggerReleasedSinceLastShot;
 
     // Components
     Camera cam;
@@ -29,21 +32,22 @@ public class Weapon : MonoBehaviour
     Animator arms;
     PlayerMotor playerMotor;
     Player player;
+    Crosshair crosshair;
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
+        player = FindObjectOfType<Player>();
         cam = Camera.main;
-        //animator = GetComponent<Animator>();
+        crosshair = FindObjectOfType<Crosshair>();
         playerMotor = GetComponentInParent<PlayerMotor>();
-        arms = GameObject.FindGameObjectWithTag("Arms").GetComponent<Animator>();
+        arms = GetComponentInParent<Animator>();
     }
 
     private void Start()
     {
         fireType = gunData.fireType;
         bulletsLeft = gunData.magazineCapacity;
+        nextFireTime = Time.time + gunData.fireRate;
     }
 
     private void FixedUpdate()
@@ -53,10 +57,26 @@ public class Weapon : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(!player.IsReloading && bulletsLeft == 0)
+        if(Input.GetButtonDown(InputManager.instance.reloadButton))
         {
             Reload();
         }
+
+        if (!player.IsReloading && bulletsLeft == 0)
+        {
+            Reload();
+        }
+
+        if(player.CurrentWeapon != null)
+        {
+            HandleCurrentWeapon();
+        }
+    }
+
+    public void Initialize(Animator newAnimtor)
+    {
+        arms = newAnimtor;
+        nextFireTime = Time.time + gunData.fireRate;
     }
 
     public void Shoot()
@@ -73,14 +93,13 @@ public class Weapon : MonoBehaviour
             }
             else if (fireType == FireTypes.SINGLE)
             {
-                if (!player.TriggerReleasedSinceLastShot)
+                if (!triggerReleasedSinceLastShot)
                 {
                     return;
                 }
             }
 
             arms.CrossFadeInFixedTime("shoot", 0.01f);
-
             Instantiate(shellPrefab, shellEjection.position, shellEjection.rotation);
             GameObject muzzleFlashInstance = Instantiate(muzzleFlash, muzzle.position, Quaternion.identity);
             Destroy(muzzleFlashInstance, 1f);
@@ -93,7 +112,7 @@ public class Weapon : MonoBehaviour
 
     public void Reload()
     {
-        if(!player.IsReloading && bulletsLeft != gunData.magazineCapacity)
+        if (!player.IsReloading && bulletsLeft != gunData.magazineCapacity)
         {
             bulletsLeftBeforeReload = bulletsLeft;
             StartCoroutine(AnimateReload());
@@ -102,13 +121,41 @@ public class Weapon : MonoBehaviour
 
     public bool CanShoot()
     {
-        if(!player.IsReloading && Time.time > nextFireTime && bulletsLeft > 0)
+        if (!player.IsReloading && Time.time > nextFireTime && bulletsLeft > 0)
         {
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
+    }
+
+    private void HandleCurrentWeapon()
+    {
+        if (player.IsAimingDownSights)
+        {
+            arms.SetBool("IsAiming", true);
+            crosshair.ToggleCrosshair(false);
+        }
+        else if (!player.IsAimingDownSights)
+        {
+            arms.SetBool("IsAiming", false);
+            crosshair.ToggleCrosshair(true);
+        }
+
+        if (InputManager.instance.InputMag > 0.01f)
+        {
+            arms.SetFloat("InputMagnitude", InputManager.instance.InputMag, startAnimTime, Time.deltaTime);
+        }
+        else if (InputManager.instance.InputMag < 0.01f)
+        {
+            arms.SetFloat("InputMagnitude", InputManager.instance.InputMag, stopAnimTime, Time.deltaTime);
+        }
+
+        if (InputManager.instance.Shoot > 0) OnTriggerHold();
+        if (InputManager.instance.Shoot <= 0) OnTriggerReleased();
+
     }
 
     private void HandleAnimationSynchronization()
@@ -127,7 +174,7 @@ public class Weapon : MonoBehaviour
 
         //playerMotor.IsReloading = true;
         player.IsReloading = true;
-        
+
         yield return new WaitForSeconds(0.2f);
 
         //animator.SetTrigger("Reload");
@@ -136,7 +183,7 @@ public class Weapon : MonoBehaviour
         float reloadSpeed = 1f / gunData.reloadTime;
         float percent = 0;
 
-        while(percent < 1)
+        while (percent < 1)
         {
             percent += Time.deltaTime * reloadSpeed;
             yield return null;
@@ -157,13 +204,13 @@ public class Weapon : MonoBehaviour
             //Instantiate(debugItem, hit.point, Quaternion.identity);
             EnemyHP enemy = hit.collider.GetComponent<EnemyHP>();
 
-            if(enemy != null)
+            if (enemy != null)
             {
                 enemy.DeductHealth(2f);
             }
         }
     }
-    
+
     public void CancelReload()
     {
         player.IsReloading = false;
@@ -173,5 +220,17 @@ public class Weapon : MonoBehaviour
     public void ResetBurst()
     {
         shotsRemainingInBurst = gunData.burstCount;
+    }
+
+    public void OnTriggerHold()
+    {
+        Shoot();
+        triggerReleasedSinceLastShot = false;
+    }
+
+    public void OnTriggerReleased()
+    {
+        triggerReleasedSinceLastShot = true;
+        ResetBurst();
     }
 }

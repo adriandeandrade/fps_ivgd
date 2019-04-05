@@ -4,146 +4,213 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Weapon currentlyEquippedGun;
+    [SerializeField] private Transform primarySlotTransform;
+    [SerializeField] private Transform secondarySlotTransform;
+
+    [Space]
 
     [SerializeField] private WeaponSlot primarySlot;
     [SerializeField] private WeaponSlot secondarySlot;
 
     // Private Variables
+
     bool isReloading;
     bool isAimingDownSights;
-    bool triggerReleasedSinceLastShot;
-    WeaponSlot currentSlot;
+    bool isHoldingWeapon;
 
     // Properties
-    public Weapon CurrentlyEquippedGun { get { return currentlyEquippedGun; } set { currentlyEquippedGun = value; } }
-    public Animator ArmsAnimator { get { return armsAnimator; } private set { } }
+    public Weapon CurrentWeapon { get { return currentWeapon; } set { currentWeapon = value; } }
     public bool IsReloading { get { return isReloading; } set { isReloading = value; } }
     public bool IsAimingDownSights { get { return isAimingDownSights; } set { isAimingDownSights = value; } }
-    public bool TriggerReleasedSinceLastShot { get => triggerReleasedSinceLastShot; set => triggerReleasedSinceLastShot = value; }
+    public bool IsHoldingWeapon { get => isHoldingWeapon; set => isHoldingWeapon = value; }
 
     // Components
-    Animator armsAnimator;
-    Crosshair crosshair;
-
+    WeaponSlot currentSlot;
+    Weapon currentWeapon;
+    GameObject currentArms;
 
     private void Awake()
     {
-        currentlyEquippedGun = primarySlot.weaponsInSlot[0].gameObject.GetComponentInChildren<Weapon>();
-        armsAnimator = currentlyEquippedGun.gameObject.GetComponentInParent<Animator>();
-        crosshair = FindObjectOfType<Crosshair>();
+        InitWeaponSlots();
     }
 
     private void Start()
     {
         isReloading = false;
         isAimingDownSights = false;
-        currentSlot = primarySlot;
     }
 
     private void Update()
     {
-        if (currentlyEquippedGun != null)
-        {
-            HandleCurrentWeapon();
-        }
-
         CycleInventory();
     }
 
-    private void HandleCurrentWeapon()
+    private void InitWeaponSlots()
     {
-        if (isAimingDownSights)
-        {
-            armsAnimator.SetBool("IsAiming", true);
-            crosshair.ToggleCrosshair(false);
-        }
-        else if (!isAimingDownSights)
-        {
-            armsAnimator.SetBool("IsAiming", false);
-            crosshair.ToggleCrosshair(true);
-        }
+        primarySlot = new WeaponSlot(this, primarySlotTransform, 2);
+        secondarySlot = new WeaponSlot(this, secondarySlotTransform, 1);
 
-        if (InputManager.instance.Shoot > 0) OnTriggerHold();
-        if (InputManager.instance.Shoot <= 0) OnTriggerReleased();
+        primarySlot.InitSlot();
+        secondarySlot.InitSlot();
 
+        currentSlot = secondarySlot;
+        currentWeapon = currentSlot.GetWeapon();
+        currentArms = currentSlot.GetCurrentArms();
+        primarySlotTransform.gameObject.SetActive(false);
     }
 
-    public void OnTriggerHold()
+    public void AddWeapon(WeaponData newWeaponData, GameObject weaponArms)
     {
-        currentlyEquippedGun.Shoot();
-        TriggerReleasedSinceLastShot = false;
-    }
+        WeaponSlot slotToAddTo = newWeaponData.weaponType == WeaponType.PRIMARY ? primarySlot : secondarySlot; // Check which slot we want to add the weapon too.
 
-    public void OnTriggerReleased()
-    {
-        TriggerReleasedSinceLastShot = true;
-        currentlyEquippedGun.ResetBurst();
+        if (slotToAddTo.weaponsInSlot.Count == 1)
+        {
+            if (slotToAddTo.CanAddWeapon()) // If we can add the weapon
+            {
+                Transform slot = slotToAddTo.GetSlotTransform();
+                GameObject newWeapon = Instantiate(newWeaponData.weaponArms, slot);
+
+                if (slotToAddTo.weaponsInSlot.Count <= 0)
+                {
+                    newWeapon.SetActive(true);
+                }
+
+                slotToAddTo.AddWeaponToSlot(newWeapon);
+            }
+        }
+        else if (slotToAddTo.CanAddWeapon()) // If we can add the weapon
+        {
+            Transform slot = slotToAddTo.GetSlotTransform();
+            GameObject newWeapon = Instantiate(newWeaponData.weaponArms, slot);
+
+            if (slotToAddTo.weaponsInSlot.Count <= 0)
+            {
+                newWeapon.SetActive(true);
+            }
+
+            slotToAddTo.AddWeaponToSlot(newWeapon);
+            slotToAddTo.UpdateSlot(weaponArms);
+        }
     }
 
     public void CycleInventory()
     {
-        if(Input.GetButtonDown(InputManager.instance.cyclePrimaryButtonName))
+
+        if (Input.GetButtonDown(InputManager.instance.switchWeaponButtonName) && CanCycleInventory())
         {
-            if (InputManager.instance.CheckDoubleTap(InputManager.instance.cyclePrimaryButtonName))
+            if (isReloading) currentWeapon.CancelReload();
+            if (currentSlot == primarySlot)
             {
-                CycleSlot();
-                return;
+                // Switch to Secondary Guns
+                currentSlot = secondarySlot;
+                primarySlotTransform.gameObject.SetActive(false);
+                secondarySlotTransform.gameObject.SetActive(true);
+                //secondarySlot.GetSlotTransform().GetChild(0).gameObject.SetActive(true);
+                UpdateInventory();
             }
-            else
+            else if (currentSlot == secondarySlot)
             {
-                if (currentSlot == primarySlot)
-                {
-                    // Switch to Secondary Guns
-                    currentSlot = secondarySlot;
-                    primarySlot.slot.gameObject.SetActive(false);
-                    secondarySlot.slot.gameObject.SetActive(true);
-                    Debug.Log("Switched To Secondary");
-                }
-                else if (currentSlot == secondarySlot)
-                {
-                    // Switch to Primary Guns
-                    currentSlot = primarySlot;
-                    primarySlot.slot.gameObject.SetActive(true);
-                    secondarySlot.slot.gameObject.SetActive(false);
-                    Debug.Log("Switched To Primary");
-                }
+                // Switch to Primary Guns
+                currentSlot = primarySlot;
+                primarySlotTransform.gameObject.SetActive(true);
+                secondarySlotTransform.gameObject.SetActive(false);
+                //primarySlot.GetSlotTransform().GetChild(0).gameObject.SetActive(true);
+                UpdateInventory();
             }
+
         }
+        else if (Input.GetButtonDown(InputManager.instance.cycleGunsInSlotButtonName))
+        {
+            CycleSlot();
+        }
+    }
+
+    private bool CanCycleInventory()
+    {
+        return primarySlot.GetSlotTransform().childCount > 0 && secondarySlot.GetSlotTransform().childCount > 0;
     }
 
     public void CycleSlot()
     {
-        //if (currentSlot == primarySlot)
-        //{
-        //    primarySlot.SwitchWeaponInSlot();
-        //}
-        //else if (currentSlot == secondarySlot)
-        //{
-        //    secondarySlot.SwitchWeaponInSlot();
-        //}
+        if (isReloading) currentWeapon.CancelReload();
 
-        Debug.Log("Cycled.");
+        currentSlot.SwitchWeaponInSlot();
     }
 
+    public void UpdateInventory()
+    {
+        currentWeapon = currentSlot.GetWeapon();
+        currentArms = currentSlot.GetCurrentArms();
+    }
 }
 
 [System.Serializable]
 public class WeaponSlot
 {
-    [SerializeField] private Player player;
-    public Transform slot;
-    public GameObject currentWeapon;
-    public Weapon currentlySelectedWeaponInSlot;
+    public GameObject currentArms;
+    public Weapon currentWeaponInSlot;
     public List<GameObject> weaponsInSlot;
-    public int weaponIndex;
-    public int maxGuns;
+
+    int maxGuns;
+    int weaponIndex;
+
+    Player player;
+    Transform slot;
+
+    public WeaponSlot(Player _player, Transform _slotTransform, int _maxGuns)
+    {
+        player = _player;
+        slot = _slotTransform;
+        maxGuns = _maxGuns;
+        weaponsInSlot = new List<GameObject>();
+    }
+
+    public void InitSlot()
+    {
+        foreach (Transform child in slot) // Look through all the children of this slot.
+        {
+            weaponsInSlot.Add(child.gameObject); // Add them all to a list.
+            child.gameObject.SetActive(false); // Turn them off by default.
+        }
+
+        if (slot.childCount > 0)
+        {
+            slot.GetChild(0).gameObject.SetActive(true);
+            currentWeaponInSlot = slot.GetChild(0).gameObject.GetComponentInChildren<Weapon>();
+            currentArms = slot.GetChild(0).gameObject;
+        }
+    }
+
+    public Transform GetSlotTransform()
+    {
+        return slot;
+    }
+
+    public void UpdateSlotData(Weapon newWeapon, GameObject newArms)
+    {
+        currentArms = newArms;
+        currentWeaponInSlot = newArms.GetComponentInChildren<Weapon>();
+        currentArms.SetActive(true);
+        Debug.Log("New Arms turned on.");
+
+        player.UpdateInventory();
+    }
+
+    public void UpdateSlot(GameObject newArms)
+    {
+        if (slot.childCount > 0)
+        {
+            currentArms = newArms;
+            currentWeaponInSlot = newArms.GetComponentInChildren<Weapon>();
+        }
+    }
 
     public void SwitchWeaponInSlot()
     {
         if (weaponsInSlot.Count <= 1) return; // Returns if we dont have more than one weapon in the slot.
-
-        currentWeapon.gameObject.SetActive(false);
+        
+        weaponsInSlot[weaponIndex].SetActive(false);
+        Debug.Log("Old Arms turned off.: " + currentArms.name);
 
         if (weaponIndex >= weaponsInSlot.Count - 1)
         {
@@ -154,12 +221,21 @@ public class WeaponSlot
             weaponIndex++;
         }
 
-        currentWeapon = weaponsInSlot[weaponIndex].gameObject;
-        player.CurrentlyEquippedGun = currentWeapon.gameObject.GetComponentInChildren<Weapon>();
-        currentWeapon.gameObject.SetActive(true);
-        //currentlySelectedWeaponInSlot.gameObject.SetActive(true);
+        Weapon newWeapon = weaponsInSlot[weaponIndex].GetComponentInChildren<Weapon>();
+        GameObject newArms = weaponsInSlot[weaponIndex].gameObject;
 
 
+        UpdateSlotData(newWeapon, newArms);
+    }
+
+    public GameObject GetCurrentArms()
+    {
+        return currentArms;
+    }
+
+    public Weapon GetWeapon()
+    {
+        return currentWeaponInSlot;
     }
 
     public bool CheckWeaponExists(GameObject weaponToCheck)
@@ -185,5 +261,6 @@ public class WeaponSlot
     public void AddWeaponToSlot(GameObject gunToAdd)
     {
         weaponsInSlot.Add(gunToAdd);
+        //gunToAdd.gameObject.SetActive(false);
     }
 }

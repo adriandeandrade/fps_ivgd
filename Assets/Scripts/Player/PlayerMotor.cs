@@ -6,32 +6,26 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public class PlayerMotor : MonoBehaviour
 {
-    [Header("Player Configuration")]
+    // Public Variables
+    [Header("Speed Variables")]
     [SerializeField] private float sprintSpeed = 15.0f;
     [SerializeField] private float walkSpeed = 10.0f;
     [SerializeField] private float speedWhileAiming = 8f;
+
+    [Header("Other Configuration")]
     [SerializeField] private float gravity = 10.0f;
     [SerializeField] private float maxVelocityChange = 10.0f;
     [SerializeField] private float jumpHeight = 2.0f;
     [SerializeField] private float maxDistanceFromWall = 5f;
-    [SerializeField] private float avoidWallsArmSpeed = 2f;
-    [SerializeField] private bool avoidWalls;
     [SerializeField] private Transform cam2;
-    [SerializeField] private Transform armsT;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private LayerMask groundMask;
-    [SerializeField] private KeyCode sprintKey;
 
-    [SerializeField] private Vector3 closeToWallArmPosition;
-
-    [Header("Animation")]
-    [SerializeField] private float startAnimTime = 0.3f;
-    [SerializeField] private float stopAnimTime = 0.15f;
+    
 
     public bool IsSprinting { get { return isSprinting; } set { isSprinting = value; } }
     public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
-    public bool IsHittingWall { get { return isHittingWall; } set { isHittingWall = value; } }
     public bool CanSprint { get { return canSprint; } set { canSprint = value; } }
     public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
 
@@ -40,7 +34,6 @@ public class PlayerMotor : MonoBehaviour
     bool isReloading;
     bool isJumping;
     bool isShooting;
-    bool isHittingWall;
     bool isAiming;
     bool canSprint;
 
@@ -50,7 +43,6 @@ public class PlayerMotor : MonoBehaviour
 
     Vector3 originalWeaponPosition;
 
-    InputManager inputManager;
     Player player;
     Rigidbody rBody;
     Camera cam;
@@ -59,7 +51,6 @@ public class PlayerMotor : MonoBehaviour
     {
         player = GetComponent<Player>();
         rBody = GetComponent<Rigidbody>();
-        inputManager = InputManager.instance;
         cam = Camera.main;
         rBody.freezeRotation = true;
         rBody.useGravity = false;
@@ -69,15 +60,13 @@ public class PlayerMotor : MonoBehaviour
     {
         mouseLook = new MouseLook();
         mouseLook.Init(transform, cam.transform);
-        originalWeaponPosition = armsT.localPosition;
     }
 
     private void Update()
     {
         if (player.IsAimingDownSights && !player.IsReloading) { canSprint = false; } else if (!player.IsAimingDownSights && !player.IsReloading) { canSprint = true; }
 
-        HandleMovementAnimations();
-        if(avoidWalls)  ArmsAvoidWall();
+        //HandleMovementAnimations();
         RotateView();
     }
 
@@ -139,33 +128,7 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
-    private void HandleMovementAnimations()
-    {
-        if (InputManager.instance.InputMag > 0.01f)
-        {
-            player.ArmsAnimator.SetFloat("InputMagnitude", InputManager.instance.InputMag, startAnimTime, Time.deltaTime);
-        }
-        else if (InputManager.instance.InputMag < 0.01f)
-        {
-            player.ArmsAnimator.SetFloat("InputMagnitude", InputManager.instance.InputMag, stopAnimTime, Time.deltaTime);
-        }
-    }
-
-    private void ArmsAvoidWall()
-    {
-        RaycastHit hit;
-        Debug.DrawLine(cam2.transform.position, cam.transform.forward * maxDistanceFromWall, Color.red);
-        if (Physics.Raycast(cam2.transform.position, cam.transform.forward, out hit, maxDistanceFromWall))
-        {
-            Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, closeToWallArmPosition, avoidWallsArmSpeed * Time.deltaTime);
-            armsT.localPosition = targetPosition;
-        }
-        else
-        {
-            Vector3 targetPosition = Vector3.Lerp(armsT.localPosition, originalWeaponPosition, avoidWallsArmSpeed * Time.deltaTime);
-            armsT.localPosition = targetPosition;
-        }
-    }
+    
 
     private void RotateView()
     {
