@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: 6380aaca15b68c64bb01ffcf851c4223
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Box01
+    100002: Box26
+    100004: Box27
+    100006: Box28
+    100008: Box40
+    100010: Box42
+    100012: contour_stop03
+    100014: Cylinder45
+    100016: Cylinder46
+    100018: Cylinder47
+    100020: Cylinder48
+    100022: Cylinder64
+    100024: Cylinder65
+    100026: pannonceau
+    100028: Plane03
+    100030: rail_bas
+    100032: rail_bas07
+    100034: rail_haut
+    100036: Vis_rail34
+    100038: Vis_rail35
+    100040: Vis_rail36
+    100042: Vis_rail37
+    100044: Vis_rail52
+    100046: Vis_rail53
+    100048: //RootNode
+    400000: Box01
+    400002: Box26
+    400004: Box27
+    400006: Box28
+    400008: Box40
+    400010: Box42
+    400012: contour_stop03
+    400014: Cylinder45
+    400016: Cylinder46
+    400018: Cylinder47
+    400020: Cylinder48
+    400022: Cylinder64
+    400024: Cylinder65
+    400026: pannonceau
+    400028: Plane03
+    400030: rail_bas
+    400032: rail_bas07
+    400034: rail_haut
+    400036: Vis_rail34
+    400038: Vis_rail35
+    400040: Vis_rail36
+    400042: Vis_rail37
+    400044: Vis_rail52
+    400046: Vis_rail53
+    400048: //RootNode
+    2100000: 'Material #3'
+    2100002: 'Material #2'
+    2300000: Box01
+    2300002: Box26
+    2300004: Box27
+    2300006: Box28
+    2300008: Box40
+    2300010: Box42
+    2300012: contour_stop03
+    2300014: Cylinder45
+    2300016: Cylinder46
+    2300018: Cylinder47
+    2300020: Cylinder48
+    2300022: Cylinder64
+    2300024: Cylinder65
+    2300026: Plane03
+    2300028: rail_bas
+    2300030: rail_bas07
+    2300032: rail_haut
+    2300034: Vis_rail34
+    2300036: Vis_rail35
+    2300038: Vis_rail36
+    2300040: Vis_rail37
+    2300042: Vis_rail52
+    2300044: Vis_rail53
+    3300000: Box01
+    3300002: Box26
+    3300004: Box27
+    3300006: Box28
+    3300008: Box40
+    3300010: Box42
+    3300012: contour_stop03
+    3300014: Cylinder45
+    3300016: Cylinder46
+    3300018: Cylinder47
+    3300020: Cylinder48
+    3300022: Cylinder64
+    3300024: Cylinder65
+    3300026: Plane03
+    3300028: rail_bas
+    3300030: rail_bas07
+    3300032: rail_haut
+    3300034: Vis_rail34
+    3300036: Vis_rail35
+    3300038: Vis_rail36
+    3300040: Vis_rail37
+    3300042: Vis_rail52
+    3300044: Vis_rail53
+    4300000: Cylinder48
+    4300002: rail_haut
+    4300004: Box27
+    4300006: Cylinder45
+    4300008: Vis_rail34
+    4300010: Box26
+    4300012: Vis_rail37
+    4300014: Cylinder46
+    4300016: Cylinder47
+    4300018: Vis_rail35
+    4300020: Vis_rail36
+    4300022: Box28
+    4300024: Box01
+    4300026: rail_bas
+    4300028: Plane03
+    4300030: rail_bas07
+    4300032: Box42
+    4300034: Vis_rail52
+    4300036: Cylinder64
+    4300038: Cylinder65
+    4300040: Vis_rail53
+    4300042: contour_stop03
+    4300044: Box40
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
