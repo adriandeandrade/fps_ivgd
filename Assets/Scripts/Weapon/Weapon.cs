@@ -170,7 +170,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator AnimateReload()
     {
-        Debug.Log("Reloading...");
+        //Debug.Log("Reloading...");
 
         //playerMotor.IsReloading = true;
         player.IsReloading = true;
@@ -193,7 +193,7 @@ public class Weapon : MonoBehaviour
         //playerMotor.IsReloading = false;
         arms.SetBool("IsReloading", false);
         bulletsLeft = gunData.magazineCapacity;
-        Debug.Log("Finished Reloading!");
+        //Debug.Log("Finished Reloading!");
     }
 
     private void ShootRay()

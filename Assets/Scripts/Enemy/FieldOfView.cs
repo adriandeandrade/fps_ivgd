@@ -19,6 +19,12 @@ public class FieldOfView : MonoBehaviour
     public MeshFilter viewMeshFilter;
 
     Mesh viewMesh;
+    StateMachine states;
+
+    private void Awake()
+    {
+        states = GetComponent<Unit>().stateMachine;
+    }
 
     private void Start()
     {
@@ -39,6 +45,8 @@ public class FieldOfView : MonoBehaviour
 
     void FindVisibleTargets()
     {
+        bool wasDetected = GameManager.instance.detected;
+        GameManager.instance.beingDetected = false;
         visibleTargets.Clear();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask); // Get colliders within fov
 
@@ -53,11 +61,14 @@ public class FieldOfView : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)) // If we see the target.
                 {
-                    visibleTargets.Add(target);
-                    // We know if we can see the target.
-                } else
+                    //visibleTargets.Add(target);
+                    GameManager.instance.detected = true;
+                    GameManager.instance.playerT = target;
+                }
+                else
                 {
-                    // If we cant see the target;
+                    GameManager.instance.detected = false;
+                    //states.ChangeState(new SearchState(GetComponent<Unit>()));
                 }
             }
         }
