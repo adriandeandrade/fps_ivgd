@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: AK47
   m_EditorClassIdentifier: 
   fireType: 0
+  weaponType: 0
   magazineCapacity: 30
   burstCount: 0
   fireRate: 0.1
   fireRange: 300
   reloadTime: 1
-  weaponName: 
+  weaponName: AK47
+  weaponArms: {fileID: 3181583005926574602, guid: 039d820cd05fd464bb30eeed5222df79,
+    type: 3}

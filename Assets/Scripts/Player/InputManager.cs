@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] public string primaryAttackButtonName;
     [SerializeField] public string reloadButton;
     [SerializeField] public string switchWeaponButtonName;
+    [SerializeField] public string cycleGunsInSlotButtonName;
 
     float horizontal;
     float vertical;
@@ -51,7 +52,6 @@ public class InputManager : MonoBehaviour
     public float InputMag { get { return inputMagnitude; } private set { } }
     public float ADS { get { return ads; } set { ads = value; } }
     public float Shoot { get { return shoot; } set { ads = value; } }
-
     public bool HandleMovement { get => handleMovement; set => handleMovement = value; }
 
     private void Awake()
@@ -65,56 +65,59 @@ public class InputManager : MonoBehaviour
     {
         if (!HandleMovement) return;
 
-            if (useRaw)
-            {
-                movement = new Vector3(Input.GetAxisRaw(xAxisName), 0, Input.GetAxisRaw(yAxisName));
-                movement = movement.normalized;
-            }
-            else
-            {
-                movement = new Vector3(Input.GetAxis(xAxisName), 0, Input.GetAxis(yAxisName));
-                movement = movement.normalized;
-            }
+        if (useRaw)
+        {
+            movement = new Vector3(Input.GetAxisRaw(xAxisName), 0, Input.GetAxisRaw(yAxisName));
+            movement = movement.normalized;
+        }
+        else
+        {
+            movement = new Vector3(Input.GetAxis(xAxisName), 0, Input.GetAxis(yAxisName));
+            movement = movement.normalized;
+        }
 
-            InputMagnitude(movement);
+        InputMagnitude(movement);
 
-            shoot = Input.GetAxis(primaryAttackButtonName);
-            ads = Input.GetAxis(adsButtonName);
+        shoot = Input.GetAxis(primaryAttackButtonName);
+        ads = Input.GetAxis(adsButtonName);
 
-            if (Input.GetButtonDown(jumpButtonName))
-            {
-                playerMotor.IsJumping = true;
-            }
+        //CheckDoubleTap(cyclePrimaryButtonName);
 
-            if (Input.GetButton(sprintButtonName) && playerMotor.CanSprint)
-            {
-                playerMotor.IsSprinting = true;
-                inputMagnitude *= 2;
-            }
-            else if (Input.GetButtonUp(sprintButtonName))
-            {
-                playerMotor.IsSprinting = false;
-            }
+        if (Input.GetButtonDown(jumpButtonName) && playerMotor.IsGrounded)
+        {
+            playerMotor.IsJumping = true;
+        }
 
-            if (ads > 0 && playerMotor.IsSprinting)
-            {
-                player.IsAimingDownSights = true;
-                playerMotor.IsSprinting = false;
-            }
-            else if (ads <= 0)
-            {
-                player.IsAimingDownSights = false;
-            }
+        if (Input.GetButton(sprintButtonName) && playerMotor.CanSprint)
+        {
+            playerMotor.IsSprinting = true;
+            inputMagnitude *= 2;
+        }
+        else if (Input.GetButtonUp(sprintButtonName))
+        {
+            playerMotor.IsSprinting = false;
+        }
 
-            if (Input.GetButtonDown(reloadButton))
-            {
-                player.CurrentlyEquippedGun.Reload();
-            }
-            else if (Input.GetButtonDown(reloadButton) && playerMotor.IsSprinting)
-            {
-                playerMotor.IsSprinting = false;
-                player.CurrentlyEquippedGun.Reload();
-            }
+        if (ads > 0 && playerMotor.IsSprinting)
+        {
+            player.IsAimingDownSights = true;
+            playerMotor.IsSprinting = false;
+        }
+        else if (ads <= 0)
+        {
+            player.IsAimingDownSights = false;
+        }
+
+        //if (Input.GetButtonDown(reloadButton))
+        //{
+        //    player.CurrentWeapon.Reload();
+        //}
+
+        //else if (Input.GetButtonDown(reloadButton) && playerMotor.IsSprinting)
+        //{
+        //    playerMotor.IsSprinting = false;
+        //    player.CurrentWeapon.Reload();
+        //}
     }
 
     private void InputMagnitude(Vector3 input)

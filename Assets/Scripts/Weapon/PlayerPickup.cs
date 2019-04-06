@@ -40,7 +40,8 @@ public class PlayerPickup : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.G))
             {
-                player.AddWeapon(pickup.weaponData);
+                player.AddWeapon(pickup.weaponData, pickup.weaponData.weaponArms);
+                //Destroy(pickup.gameObject);
             }
 
             EnablePickupUI();

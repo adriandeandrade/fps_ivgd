@@ -41,7 +41,7 @@ public class AimDownSights : MonoBehaviour
 
     private void AimDownSight()
     {
-        if (InputManager.instance.ADS > 0 && !player.IsReloading && !playerMotor.IsHittingWall)
+        if (InputManager.instance.ADS > 0 && !player.IsReloading)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, aimPosition, aimDownSightSpeed * Time.deltaTime);
             float targetFov = Mathf.Lerp(virtualCamera.m_Lens.FieldOfView, desiredFov, changeFovSpeed * Time.deltaTime);
