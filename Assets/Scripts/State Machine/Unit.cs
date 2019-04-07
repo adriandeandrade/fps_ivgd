@@ -21,6 +21,6 @@ public class Unit : MonoBehaviour
     private void Update()
     {
         stateMachine.Update();
-        Debug.Log(transform.name + ": " + stateMachine.CurrentState);
+        Debug.Log(stateMachine.CurrentState);
     }
 }

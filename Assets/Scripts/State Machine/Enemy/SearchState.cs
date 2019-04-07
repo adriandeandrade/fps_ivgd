@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SearchState : IState
 {
     float searchTime = 2f;
     float searchTimer = 0f;
-    float searchRadius = 3f;
+    float searchRadius = 15f;
+    float destinationReachedThreshold = 0.5f;
     int amountOfSearches = 2;
-    bool searching = true;
+    bool isSearching;
 
     Unit owner;
-    Transform target;
-    Transform lastKnownPosition;
+    Vector3 target;
+    Vector3 lastKnownPosition;
 
     public SearchState(Unit _owner)
     {
@@ -21,9 +23,9 @@ public class SearchState : IState
 
     public void Enter()
     {
-        target = GameManager.instance.playerT;
-        searching = true;
-        owner.StartCoroutine(Search());
+        lastKnownPosition = owner.agent.destination;
+        target = lastKnownPosition;
+        searchTimer = searchTime;
     }
 
     public void Execute()
@@ -34,30 +36,61 @@ public class SearchState : IState
             return;
         }
 
-        //Vector3 searchPoint = new Vector3(lastKnownPosition.position.x, lastKnownPosition.position.y, lastKnownPosition.position.z) + Random.insideUnitSphere * searchRadius;
-        //target.position = searchPoint;
-        //owner.agent.SetDestination(searchPoint);
-        //Debug.Log(searchPoint);
+        CheckDestinationReached();
+
+        if (isSearching)
+        {
+            if (searchTimer <= 0f) // If timer is done.
+            {
+                isSearching = false;
+                amountOfSearches -= 1;
+                Debug.Log("Finished Searching.");
+
+                if (amountOfSearches <= 0)
+                {
+                    Debug.Log("Returning to patrol.");
+                    owner.stateMachine.ChangeState(new PatrolState(this.owner));
+                    return;
+                }
+
+                searchTimer = searchTime;
+                target = RandomPositionFromLastKnown(lastKnownPosition);
+            }
+            else
+            {
+                searchTimer -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            owner.agent.SetDestination(target);
+        }
     }
 
     public void Exit()
     {
-
+        // TODO: If nothing found then set the global alerted to false
     }
 
-    IEnumerator Search()
+    private void CheckDestinationReached()
     {
-        for (int i = 0; i < amountOfSearches - 1; i++)
+        float distanceToTarget = owner.agent.remainingDistance;
+
+        if (distanceToTarget < destinationReachedThreshold)
         {
-            Vector3 searchPoint = new Vector3(lastKnownPosition.position.x, lastKnownPosition.position.y, lastKnownPosition.position.z) + Random.insideUnitSphere * searchRadius;
-            target.position = searchPoint;
-            owner.agent.SetDestination(searchPoint);
-            yield return HasPath();
+            Debug.Log("Destination Reached");
+            isSearching = true;
+            target = RandomPositionFromLastKnown(lastKnownPosition);
         }
     }
 
-    private bool HasPath()
+
+    private Vector3 RandomPositionFromLastKnown(Vector3 lastPos)
     {
-        return owner.agent.hasPath && owner.agent.remainingDistance <= 0.9;
+        Vector3 searchPoint = lastPos + Random.insideUnitSphere * searchRadius;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(owner.transform.position, out hit, searchRadius, 1);
+        Debug.Log(hit.position);
+        return hit.position;
     }
 }

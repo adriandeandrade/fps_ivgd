@@ -24,8 +24,6 @@ public class AttackState : IState
         target = GameManager.instance.playerT;
         canAttack = false;
         isMoving = true;
-        owner.agent.acceleration = 8f;
-        owner.agent.speed = 2.5f;
     }
 
     public void Execute()
@@ -65,7 +63,7 @@ public class AttackState : IState
 
     public void Attack()
     {
-        
+        // Stop and shoot until too far again.   
     }
 
     public void Exit()

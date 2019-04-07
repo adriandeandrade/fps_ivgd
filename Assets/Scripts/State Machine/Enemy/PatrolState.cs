@@ -19,9 +19,9 @@ public class PatrolState : IState
 
     public void Enter()
     {
+        owner.agent.isStopped = false;
+        waypointIndex = 0;
         target = Waypoints.points[0];
-        owner.agent.acceleration = 1f;
-        owner.agent.speed = 5f;
     }
 
     public void Execute()
