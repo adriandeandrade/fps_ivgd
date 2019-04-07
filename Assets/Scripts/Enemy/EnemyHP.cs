@@ -6,6 +6,10 @@ public class EnemyHP : MonoBehaviour
 {
     public float enemyHealth;
 
+    public GameObject bandit;
+
+    public GameObject vfx;
+
     void Start()
     {
         
@@ -14,6 +18,7 @@ public class EnemyHP : MonoBehaviour
     public void DeductHealth(float deductHealth)
     {
         enemyHealth -= deductHealth;
+        
 
         if(enemyHealth <= 0)
         {

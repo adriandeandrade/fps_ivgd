@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 24
+  bandit: {fileID: 0}
+  vfx: {fileID: 0}
 --- !u!114 &614069929
 MonoBehaviour:
   m_ObjectHideFlags: 0
