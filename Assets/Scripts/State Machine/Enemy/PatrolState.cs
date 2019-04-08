@@ -8,6 +8,7 @@ public class PatrolState : IState
     float waitTimer;
     int waypointIndex = 0;
     bool isWaiting;
+    string stateName = "PatrolState";
 
     Unit owner;
     Transform target;
@@ -33,6 +34,7 @@ public class PatrolState : IState
         }
 
         owner.agent.SetDestination(target.position);
+        UpdateAnimator();
 
         if(owner.agent.remainingDistance <= 0.5f)
         {
@@ -55,10 +57,20 @@ public class PatrolState : IState
 
     public void Exit()
     {
-        if(owner.agent.hasPath)
-        {
-            owner.agent.isStopped = true;
-        }
+        //if(owner.agent.hasPath)
+        //{
+        //    owner.agent.isStopped = true;
+        //}
+    }
+
+    public string GetState()
+    {
+        return stateName;
+    }
+
+    private void UpdateAnimator()
+    {
+        
     }
 
     private void GetNextWaypoint()

@@ -34,6 +34,7 @@ public class Weapon : MonoBehaviour
     PlayerMotor playerMotor;
     Player player;
     Crosshair crosshair;
+    AudioSource shootSource;
 
     private void Awake()
     {
@@ -42,13 +43,20 @@ public class Weapon : MonoBehaviour
         crosshair = FindObjectOfType<Crosshair>();
         playerMotor = GetComponentInParent<PlayerMotor>();
         arms = GetComponentInParent<Animator>();
+        shootSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
         fireType = gunData.fireType;
         bulletsLeft = gunData.magazineCapacity;
+        player.AmmoText.SetText(bulletsLeft + " / " + gunData.magazineCapacity);
         nextFireTime = Time.time + gunData.fireRate;
+    }
+
+    private void OnEnable()
+    {
+        player.AmmoText.SetText(bulletsLeft + " / " + gunData.magazineCapacity);
     }
 
     private void FixedUpdate()
@@ -104,9 +112,10 @@ public class Weapon : MonoBehaviour
             Instantiate(shellPrefab, shellEjection.position, shellEjection.rotation);
             GameObject muzzleFlashInstance = Instantiate(muzzleFlash, muzzle.position, Quaternion.identity);
             Destroy(muzzleFlashInstance, 1f);
-            AudioManager.instance.PlaySFX("m1911");
+            shootSource.PlayOneShot(gunData.shootSound);
             ShootRay();
             bulletsLeft--;
+            player.AmmoText.SetText(bulletsLeft + " / " + gunData.magazineCapacity);
             nextFireTime = Time.time + gunData.fireRate;
         }
     }
@@ -194,23 +203,32 @@ public class Weapon : MonoBehaviour
         //playerMotor.IsReloading = false;
         arms.SetBool("IsReloading", false);
         bulletsLeft = gunData.magazineCapacity;
+        player.AmmoText.SetText(bulletsLeft + " / " + gunData.magazineCapacity);
         //Debug.Log("Finished Reloading!");
     }
 
     private void ShootRay()
     {
         RaycastHit hit;
+
+        Vector3 lineOrigin = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
+        Debug.DrawRay(lineOrigin, Camera.main.transform.forward * 300, Color.green);
+
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gunData.fireRange, ignoreMask))
         {
             //Instantiate(debugItem, hit.point, Quaternion.identity);
-            EnemyHP enemy = hit.collider.GetComponent<EnemyHP>();
+            TakeDamage enemy = hit.collider.GetComponent<TakeDamage>();
+            Debug.Log("Hit");
 
             if (enemy != null)
             {
+                Animator enemyAnimator = enemy.GetComponentInChildren<Animator>();
+                enemyAnimator.SetTrigger("HitReaction");
+
                 Vector3 hitPoint = hit.point;
                 GameObject bloodEffect = Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
                 Destroy(bloodEffect, 2f);
-                enemy.DeductHealth(2f);
+                enemy.ReceiveDamage(10);
             }
         }
     }

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Transform primarySlotTransform;
     [SerializeField] private Transform secondarySlotTransform;
+    [SerializeField] private TextMeshProUGUI ammoText;
 
     [Space]
 
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour
     public bool IsReloading { get { return isReloading; } set { isReloading = value; } }
     public bool IsAimingDownSights { get { return isAimingDownSights; } set { isAimingDownSights = value; } }
     public bool IsHoldingWeapon { get => isHoldingWeapon; set => isHoldingWeapon = value; }
+    public TextMeshProUGUI AmmoText { get => ammoText; set => ammoText = value; }
 
     // Components
     WeaponSlot currentSlot;

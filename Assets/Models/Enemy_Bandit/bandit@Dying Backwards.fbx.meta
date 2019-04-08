@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68277db254f0e5449bf5aadcb9a7ded1
+guid: 1c38d8e70b62cd743939bba4ac74cd9a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -91,15 +91,10 @@ ModelImporter:
     400084: //RootNode
     2100000: lambert1
     4300000: bandit:headusOBJexport
-    7400000: Firing Rifle
+    7400000: Dying Backwards
     9500000: //RootNode
     13700000: bandit:headusOBJexport
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 5109e2c8fbd5ddb458e3157da2e9d390, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -128,25 +123,25 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Firing Rifle
+      name: Dying Backwards
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 41
+      lastFrame: 138
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []

@@ -20,5 +20,6 @@ MonoBehaviour:
   fireRange: 300
   reloadTime: 0.6
   weaponName: M1911
-  weaponArms: {fileID: 8073891564424989224, guid: 3104db483fe2aba42b5013a980c2bcb5,
+  weaponArms: {fileID: 8317033633371146762, guid: a82b9e3fc55601b4f913bbe2e0d8e6b0,
     type: 3}
+  shootSound: {fileID: 8300000, guid: e250a9582a034e14cbd60468889893e6, type: 3}

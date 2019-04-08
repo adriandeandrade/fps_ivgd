@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IState
 {
+    string GetState();
     void Enter();
     void Execute();
     void Exit();

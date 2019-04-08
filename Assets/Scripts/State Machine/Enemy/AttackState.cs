@@ -11,6 +11,8 @@ public class AttackState : IState
     bool canAttack;
     bool isMoving;
 
+    string stateName = "AttackState";
+
     Unit owner;
     Transform target;
 
@@ -52,6 +54,10 @@ public class AttackState : IState
         if(canAttack)
         {
             Attack();
+            owner.animator.SetBool("CanShoot", true);
+        } else
+        {
+            owner.animator.SetBool("CanShoot", false);
         }
     }
 
@@ -69,5 +75,10 @@ public class AttackState : IState
     public void Exit()
     {
         
+    }
+
+    public string GetState()
+    {
+        return stateName;
     }
 }

@@ -22,3 +22,4 @@ MonoBehaviour:
   weaponName: AK47
   weaponArms: {fileID: 3181583005926574602, guid: 039d820cd05fd464bb30eeed5222df79,
     type: 3}
+  shootSound: {fileID: 8300000, guid: c4483ee2c28d0724ea50e3233d8ba6a2, type: 3}

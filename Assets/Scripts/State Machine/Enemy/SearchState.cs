@@ -10,6 +10,7 @@ public class SearchState : IState
     float searchRadius = 15f;
     float destinationReachedThreshold = 0.5f;
     int amountOfSearches = 2;
+    string stateName = "SearchState";
     bool isSearching;
 
     Unit owner;
@@ -71,6 +72,11 @@ public class SearchState : IState
     {
         // TODO: If nothing found then set the global alerted to false
     }
+    
+    public string GetState()
+    {
+        return stateName;
+    }
 
     private void CheckDestinationReached()
     {
@@ -90,7 +96,6 @@ public class SearchState : IState
         Vector3 searchPoint = lastPos + Random.insideUnitSphere * searchRadius;
         NavMeshHit hit;
         NavMesh.SamplePosition(owner.transform.position, out hit, searchRadius, 1);
-        Debug.Log(hit.position);
         return hit.position;
     }
 }
