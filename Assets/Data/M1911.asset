@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: M1911
   m_EditorClassIdentifier: 
   fireType: 1
+  weaponType: 1
   magazineCapacity: 9
   burstCount: 0
   fireRate: 0.1
   fireRange: 300
-  reloadTime: 0.4
-  gunName: Colt M1911
+  reloadTime: 0.6
+  weaponName: M1911
+  weaponArms: {fileID: 8317033633371146762, guid: a82b9e3fc55601b4f913bbe2e0d8e6b0,
+    type: 3}
+  shootSound: {fileID: 8300000, guid: e250a9582a034e14cbd60468889893e6, type: 3}

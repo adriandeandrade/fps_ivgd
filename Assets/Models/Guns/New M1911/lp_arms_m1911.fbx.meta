@@ -1,0 +1,347 @@
+fileFormatVersion: 2
+guid: b82cd1e4fd8077745bf94dd82e7e52e5
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 1911
+    100002: fps_arms_armature
+    100004: fps_arms_mesh
+    100006: Hand.L
+    100008: Hand.L_end
+    100010: Hand.R
+    100012: Hand.R_end
+    100014: LowerArm.L
+    100016: LowerArm.R
+    100018: //RootNode
+    100020: Magazine
+    100022: Magazine_end
+    100024: Root
+    100026: Slide
+    100028: Slide_end
+    100030: UpperArm.L
+    100032: UpperArm.R
+    100034: Weapon
+    400000: 1911
+    400002: fps_arms_armature
+    400004: fps_arms_mesh
+    400006: Hand.L
+    400008: Hand.L_end
+    400010: Hand.R
+    400012: Hand.R_end
+    400014: LowerArm.L
+    400016: LowerArm.R
+    400018: //RootNode
+    400020: Magazine
+    400022: Magazine_end
+    400024: Root
+    400026: Slide
+    400028: Slide_end
+    400030: UpperArm.L
+    400032: UpperArm.R
+    400034: Weapon
+    2100000: mat_sleeve
+    2100002: mat_skin
+    2100004: mat_details
+    2100006: mat_pistol_grip
+    2100008: mat_trigger
+    2100010: mat_handgrips
+    2100012: mat_slide
+    2100014: mat_barrel
+    2100016: mat_hammer
+    4300000: fps_arms_mesh
+    4300002: 1911
+    7400000: fps_arms_armature|1911_armature|1911_armature|1911_armature|1911_armature|reload_
+    7400002: fps_arms_armature|1911_armature|1911_armature|m1911_idle|1911_armature|m1911_idle
+    7400004: fps_arms_armature|1911_armature|1911_armature|m1911_shoot|1911_armature|m1911_sho
+    7400006: fps_arms_armature|attack_melee
+    7400008: fps_arms_armature|idle_melee
+    7400010: fps_arms_armature|idle_primary
+    7400012: fps_arms_armature|idle_secondary
+    7400014: fps_arms_armature|jump_melee
+    7400016: pistol_idle
+    7400018: pistol_reload
+    7400020: pistol_shoot
+    7400022: pistol_sprint
+    7400024: fps_arms_armature|reload_primary
+    7400026: fps_arms_armature|reload_secondary
+    7400028: fps_arms_armature|shoot_primary
+    7400030: fps_arms_armature|shoot_secondary
+    7400032: fps_arms_armature|sprint_secondary
+    7400034: fps_arms_armature|walk_melee
+    7400036: fps_arms_armature|walk_secondary
+    7400038: pistol_jump
+    9500000: //RootNode
+    13700000: 1911
+    13700002: fps_arms_mesh
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_barrel
+    second: {fileID: 2100000, guid: f236366c46577444aaadc91472ab6ef8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_details
+    second: {fileID: 2100000, guid: 9b2d07f7c22b56d4eae54cde3d0c7f84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_hammer
+    second: {fileID: 2100000, guid: 78d69cb2f899f544083d1497ba55d298, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_handgrips
+    second: {fileID: 2100000, guid: 6c0b58941521b3b4798dcaa2ce42b891, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_pistol_grip
+    second: {fileID: 2100000, guid: 6fdf159f234b7ad4bbf7737b9a4f71e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_skin
+    second: {fileID: 2100000, guid: c5b4a8749ddbd0347a668af5d9b9517b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_sleeve
+    second: {fileID: 2100000, guid: 4131ce0bd0acc2540ab51e93e5e97ed8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_slide
+    second: {fileID: 2100000, guid: baa44c0b91dcdb243b1d3244845ac09f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_trigger
+    second: {fileID: 2100000, guid: 52cf6ecb26b24f54591c320ff46fa242, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: pistol_idle
+      takeName: fps_arms_armature|new_pistol_idle
+      firstFrame: 0
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: pistol_reload
+      takeName: fps_arms_armature|new_pistol_reload
+      firstFrame: 0
+      lastFrame: 99
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: pistol_shoot
+      takeName: fps_arms_armature|new_pistol_shoot
+      firstFrame: 0
+      lastFrame: 6
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: pistol_sprint
+      takeName: fps_arms_armature|new_pistol_sprint
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: pistol_jump
+      takeName: fps_arms_armature|pistol_jump
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

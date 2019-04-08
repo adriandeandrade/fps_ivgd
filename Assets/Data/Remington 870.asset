@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7374db3a2319604ab8177c995bff809, type: 3}
+  m_Name: Remington 870
+  m_EditorClassIdentifier: 
+  fireType: 1
+  weaponType: 0
+  magazineCapacity: 8
+  burstCount: 0
+  fireRate: 0.1
+  fireRange: 300
+  reloadTime: 2
+  weaponName: Remington 870
+  weaponArms: {fileID: 6736708967929833022, guid: 8052c247fb4c7a74382dd8b6fc551da6,
+    type: 3}
