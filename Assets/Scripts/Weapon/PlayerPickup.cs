@@ -17,6 +17,8 @@ public class PlayerPickup : MonoBehaviour
     Player player;
     Camera cam;
 
+    MeshRenderer meshRenderer;
+
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -36,19 +38,35 @@ public class PlayerPickup : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, maxInteractDistance, pickupMask))
         {
             PickupItem pickup = hit.collider.GetComponent<PickupItem>();
-            UpdatePickupUI(pickup.weaponData.weaponName);
 
-            if(Input.GetKeyDown(KeyCode.G))
+            if(pickup.isWeapon)
             {
-                player.AddWeapon(pickup.weaponData, pickup.weaponData.weaponArms);
-                //Destroy(pickup.gameObject);
+                UpdatePickupUI(pickup.weaponData.weaponName);
+
+                if (Input.GetKeyDown(KeyCode.G))
+                {
+                    player.AddWeapon(pickup.weaponData, pickup.weaponData.weaponArms);
+                    //Destroy(pickup.gameObject);
+                }
+            } else
+            {
+                UpdatePickupUI(pickup.itemName);
             }
 
             EnablePickupUI();
+            GetMeshRenderer(hit);
+            if (meshRenderer != null)
+            {
+                meshRenderer.material.color = Color.red;
+            }
         }
         else
         {
             DisablePickupUI();
+            if (meshRenderer != null)
+            {
+                meshRenderer.material.color = Color.white;
+            }
         }
     }
 
@@ -65,5 +83,24 @@ public class PlayerPickup : MonoBehaviour
     private void DisablePickupUI()
     {
         playerPickupUI.gameObject.SetActive(false);
+    }
+
+    private void GetMeshRenderer(RaycastHit hit)
+    {
+        MeshRenderer mr = hit.collider.GetComponent<MeshRenderer>();
+
+        if(mr != null)
+        {
+            meshRenderer = mr;
+            return;
+        }
+
+        mr = hit.collider.GetComponentInChildren<MeshRenderer>();
+
+        if(mr != null)
+        {
+            meshRenderer = mr;
+            return;
+        }
     }
 }

@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private WeaponData gunData;
     [SerializeField] private GameObject debugItem;
     [SerializeField] private GameObject shellPrefab;
+    [SerializeField] private GameObject bulletHolePrefab;
     [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private GameObject bloodEffectPrefab;
     [SerializeField] private Transform shellEjection;
@@ -218,6 +219,7 @@ public class Weapon : MonoBehaviour
         {
             //Instantiate(debugItem, hit.point, Quaternion.identity);
             TakeDamage enemy = hit.collider.GetComponent<TakeDamage>();
+            GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.identity);
             Debug.Log("Hit");
 
             if (enemy != null)

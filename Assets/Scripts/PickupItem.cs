@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-   public WeaponData weaponData;
+    public string itemName;
+    public bool isWeapon;
+    public WeaponData weaponData;
 
 }

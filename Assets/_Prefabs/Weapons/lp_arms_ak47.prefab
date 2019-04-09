@@ -550,6 +550,8 @@ MonoBehaviour:
     type: 3}
   shellPrefab: {fileID: 142548957935282250, guid: 4b8a2579330864d4e8fbde7bdc16950a,
     type: 3}
+  bulletHolePrefab: {fileID: 8766800442683693908, guid: a7f3f5343d0312541b4fe7c80b557113,
+    type: 3}
   muzzleFlash: {fileID: 4891228207562717294, guid: e2db40a3617d85c408b6dcba7bab6264,
     type: 3}
   bloodEffectPrefab: {fileID: 180275918736860728, guid: c11120aac6d9e2d47b0bac61b2c2ea51,
