@@ -31,7 +31,10 @@ public class EnemyShoot : MonoBehaviour
         if(bulletsLeft > 0)
         {
             AudioManager.instance.PlaySFX("m1911");
-            Instantiate(shellPrefab, shellEjection.position, shellEjection.rotation);
+            GameObject casing = Instantiate(shellPrefab, shellEjection.position, shellEjection.rotation);
+            GameObject muzzleFlashInstance = Instantiate(muzzleFlash, muzzle.position, Quaternion.identity);
+            Destroy(muzzleFlashInstance, 1f);
+            Destroy(casing, 1f);
             bulletsLeft--;
             ShootRay();
         }

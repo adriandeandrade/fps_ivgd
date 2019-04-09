@@ -5,9 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [SerializeField] private GameObject gameOverPanel;
     public Transform playerT;
     public bool beingDetected;
     public bool detected;
+
+    bool gameOver = false;
 
     private void Awake()
     {
@@ -27,5 +30,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
+    }
+
+    public void GameOver()
+    {
+        gameOverPanel.SetActive(true);
+        gameOver = true;
     }
 }

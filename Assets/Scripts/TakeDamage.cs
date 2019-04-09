@@ -35,6 +35,7 @@ public class TakeDamage : MonoBehaviour
             if(currentHealth <= 0)
             {
                 // Do gameover stuff here.
+                GameManager.instance.GameOver();
             }
         } else
         {

@@ -110,7 +110,8 @@ public class Weapon : MonoBehaviour
             }
 
             arms.CrossFadeInFixedTime("shoot", 0.01f);
-            Instantiate(shellPrefab, shellEjection.position, shellEjection.rotation);
+            GameObject casing = Instantiate(shellPrefab, shellEjection.position, shellEjection.rotation);
+            Destroy(casing, 1f);
             GameObject muzzleFlashInstance = Instantiate(muzzleFlash, muzzle.position, Quaternion.identity);
             Destroy(muzzleFlashInstance, 1f);
             shootSource.PlayOneShot(gunData.shootSound);
