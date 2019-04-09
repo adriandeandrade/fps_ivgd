@@ -16,6 +16,7 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstacleMask;
     public Color detectedColor;
     public Color notDetectedColor;
+    public Light flashLight;
 
     public List<Transform> visibleTargets = new List<Transform>();
     public MeshFilter viewMeshFilter;
@@ -30,6 +31,7 @@ public class FieldOfView : MonoBehaviour
         states = GetComponent<Unit>().stateMachine;
         mr = viewMeshFilter.gameObject.GetComponent<MeshRenderer>();
         meshMat = mr.material;
+        flashLight = GetComponentInChildren<Light>();
     }
 
     private void Start()
@@ -81,6 +83,8 @@ public class FieldOfView : MonoBehaviour
                 }
             }
         }
+
+        flashLight.spotAngle = viewAngle;
     }
 
     void DrawFieldOFView()

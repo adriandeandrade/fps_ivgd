@@ -92,7 +92,7 @@ Light:
   m_Type: 0
   m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
   m_Intensity: 46.3
-  m_Range: 59.7
+  m_Range: 85
   m_SpotAngle: 65.6
   m_CookieSize: 10
   m_Shadows:
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a7a81810f2d3649bc23a6a1e91896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewAngle: 60
-  viewRadius: 17.9
+  viewAngle: 80
+  viewRadius: 36.64
   meshResolution: 1
   edgeDstThreshold: 0.5
   edgeResolveIterations: 4
@@ -282,6 +282,7 @@ MonoBehaviour:
     m_Bits: 2048
   detectedColor: {r: 0.9150943, g: 0.06474723, b: 0.06474723, a: 0}
   notDetectedColor: {r: 0.8666667, g: 0.85443556, b: 0.14509803, a: 0}
+  flashLight: {fileID: 0}
   visibleTargets: []
   viewMeshFilter: {fileID: 7397048634225146553}
 --- !u!114 &7397048634719927600
