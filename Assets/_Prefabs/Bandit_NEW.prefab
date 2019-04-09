@@ -419,8 +419,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.001
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7811451946717112445, guid: 7375137dcddd6624db30392b7bfea457, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7375137dcddd6624db30392b7bfea457, type: 3}
 --- !u!4 &6779698688335044881 stripped
 Transform:
@@ -445,6 +444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bandit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 509e4d4a6db29eb40af60c9cee0cbdfa, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 82be2e9304660cd4c9b1856d08e55634, type: 2}
     - target: {fileID: 400000, guid: 509e4d4a6db29eb40af60c9cee0cbdfa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -489,10 +492,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 509e4d4a6db29eb40af60c9cee0cbdfa, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 82be2e9304660cd4c9b1856d08e55634, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 509e4d4a6db29eb40af60c9cee0cbdfa, type: 3}
 --- !u!1 &1843803861172342499 stripped

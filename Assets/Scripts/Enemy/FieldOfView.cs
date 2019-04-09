@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class FieldOfView : MonoBehaviour
 {
-    [Range(0, 306)]
+    [Range(0, 360)]
     public float viewAngle;
     public float viewRadius;
     public float meshResolution;
@@ -14,16 +14,22 @@ public class FieldOfView : MonoBehaviour
 
     public LayerMask targetMask;
     public LayerMask obstacleMask;
+    public Color detectedColor;
+    public Color notDetectedColor;
 
     public List<Transform> visibleTargets = new List<Transform>();
     public MeshFilter viewMeshFilter;
 
     Mesh viewMesh;
+    MeshRenderer mr;
     StateMachine states;
+    Material meshMat;
 
     private void Awake()
     {
         states = GetComponent<Unit>().stateMachine;
+        mr = viewMeshFilter.gameObject.GetComponent<MeshRenderer>();
+        meshMat = mr.material;
     }
 
     private void Start()
@@ -32,6 +38,7 @@ public class FieldOfView : MonoBehaviour
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
         StartCoroutine("FindTargetsWithDelay", .2f);
+        meshMat.color = notDetectedColor;
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
@@ -64,10 +71,12 @@ public class FieldOfView : MonoBehaviour
                     //visibleTargets.Add(target);
                     GameManager.instance.detected = true;
                     GameManager.instance.playerT = target;
+                    SetMeshColor(detectedColor);
                 }
                 else
                 {
                     GameManager.instance.detected = false;
+                    //SetMeshColor(notDetectedColor);
                     //states.ChangeState(new SearchState(GetComponent<Unit>()));
                 }
             }
@@ -169,6 +178,11 @@ public class FieldOfView : MonoBehaviour
         }
 
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
+
+    public void SetMeshColor(Color color)
+    {
+        meshMat.color = detectedColor;
     }
 
     private void Update()
