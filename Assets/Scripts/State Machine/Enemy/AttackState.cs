@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : IState
 {
-    float maxDistanceFromPlayer = 5f;
+    float maxDistanceFromPlayer = 15f;
     float waitBeforeMovingTime = 2f;
     float waitBeforeMovingTimer;
 
@@ -51,11 +51,12 @@ public class AttackState : IState
             Move();
         }
 
-        if(canAttack)
+        if (canAttack)
         {
             Attack();
             owner.animator.SetBool("CanShoot", true);
-        } else
+        }
+        else
         {
             owner.animator.SetBool("CanShoot", false);
         }
@@ -74,7 +75,7 @@ public class AttackState : IState
 
     public void Exit()
     {
-        
+
     }
 
     public string GetState()
