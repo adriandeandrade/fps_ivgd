@@ -219,7 +219,7 @@ public class Weapon : MonoBehaviour
         {
             //Instantiate(debugItem, hit.point, Quaternion.identity);
             TakeDamage enemy = hit.collider.GetComponent<TakeDamage>();
-            GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.identity);
+            //GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.identity);
             Debug.Log("Hit");
 
             if (enemy != null)

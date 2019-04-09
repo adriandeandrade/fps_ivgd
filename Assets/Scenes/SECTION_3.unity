@@ -2387,11 +2387,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirstPersonCharacter
       objectReference: {fileID: 0}
-    - target: {fileID: 4526937712416949459, guid: 9e5d9b54d7e8b0c408339c2aa70cfa52,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4526937712416594163, guid: 9e5d9b54d7e8b0c408339c2aa70cfa52,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4886,78 +4881,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1227490650}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1229329185 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4526937712416949459, guid: 9e5d9b54d7e8b0c408339c2aa70cfa52,
-    type: 3}
-  m_PrefabInstance: {fileID: 604527922}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1229329190 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4526937712416594163, guid: 9e5d9b54d7e8b0c408339c2aa70cfa52,
-    type: 3}
-  m_PrefabInstance: {fileID: 604527922}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1229329191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229329185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 1229329190}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 1
-  antialiasingMode: 1
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!1001 &1240577095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6587,15 +6510,15 @@ PrefabInstance:
       propertyPath: pickupText
       value: 
       objectReference: {fileID: 1650131168}
+    - target: {fileID: 376287763, guid: 0fa015ae156edbb48a90ee9ce5a504b1, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 209802062}
     - target: {fileID: 3731637348113435195, guid: 0fa015ae156edbb48a90ee9ce5a504b1,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.3
       objectReference: {fileID: 0}
-    - target: {fileID: 376287763, guid: 0fa015ae156edbb48a90ee9ce5a504b1, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 209802062}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fa015ae156edbb48a90ee9ce5a504b1, type: 3}
 --- !u!1001 &1898132018
@@ -7457,21 +7380,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3.2123594
       objectReference: {fileID: 0}
-    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 1.0868899
-      objectReference: {fileID: 0}
-    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.041343506
-      objectReference: {fileID: 0}
-    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -0.043434236
-      objectReference: {fileID: 0}
     - target: {fileID: 1030723962524799250, guid: 74c2d42368ae966449c253cecfaf9891,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7491,6 +7399,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.0868899
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.041343506
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.043434236
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74c2d42368ae966449c253cecfaf9891, type: 3}
@@ -8012,21 +7935,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 1.149996
-      objectReference: {fileID: 0}
-    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -0.074988216
-      objectReference: {fileID: 0}
-    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.041343503
-      objectReference: {fileID: 0}
     - target: {fileID: 1030723962524799250, guid: 74c2d42368ae966449c253cecfaf9891,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8046,6 +7954,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.149996
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.074988216
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037078670741165629, guid: 74c2d42368ae966449c253cecfaf9891,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.041343503
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74c2d42368ae966449c253cecfaf9891, type: 3}

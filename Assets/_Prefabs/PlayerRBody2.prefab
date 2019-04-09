@@ -605,6 +605,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2971479282743381098, guid: a82b9e3fc55601b4f913bbe2e0d8e6b0,
+        type: 3}
+      propertyPath: aimPosition.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2971479282743381098, guid: a82b9e3fc55601b4f913bbe2e0d8e6b0,
+        type: 3}
+      propertyPath: aimPosition.y
+      value: -0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 8247532381294619902, guid: a82b9e3fc55601b4f913bbe2e0d8e6b0,
         type: 3}
       propertyPath: ignoreMask.m_Bits

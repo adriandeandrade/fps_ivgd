@@ -10,6 +10,8 @@ public class Unit : MonoBehaviour
     public StateMachine stateMachine = new StateMachine();
     public NavMeshAgent agent;
     public Animator animator;
+    public enum InitialState { PATROL, GUARD, ATTACK, SEARCH }
+    public InitialState firstState;
 
     float currentSpeed;
 
@@ -21,7 +23,23 @@ public class Unit : MonoBehaviour
 
     private void Start()
     {
-        stateMachine.ChangeState(new PatrolState(this)); // Initial State
+        switch(firstState)
+        {
+            case InitialState.PATROL:
+                stateMachine.ChangeState(new PatrolState(this)); // Initial State
+                break;
+            case InitialState.GUARD:
+                stateMachine.ChangeState(new GuardState(this)); // Initial State
+                break;
+            case InitialState.ATTACK:
+                stateMachine.ChangeState(new AttackState(this)); // Initial State
+                break;
+            case InitialState.SEARCH:
+                stateMachine.ChangeState(new SearchState(this)); // Initial State
+                break;
+        }
+
+        //stateMachine.ChangeState(new PatrolState(this)); // Initial State
     }
 
     private void Update()

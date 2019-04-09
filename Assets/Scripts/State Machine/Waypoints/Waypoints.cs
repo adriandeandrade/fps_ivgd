@@ -15,4 +15,13 @@ public class Waypoints : MonoBehaviour
             points[i] = transform.GetChild(i);
         }
     }
+
+    public void OnDrawGizmos()
+    {
+        foreach (Transform point in points)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(point.position, 5f);
+        }
+    }
 }
