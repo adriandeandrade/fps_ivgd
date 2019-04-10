@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameOverPanel.SetActive(false);
+        AudioManager.instance.PlayMusic("Dark");
     }
 
     private void Update()

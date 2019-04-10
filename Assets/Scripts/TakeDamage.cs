@@ -72,8 +72,8 @@ public class TakeDamage : MonoBehaviour
             {
                 GameManager.instance.detected = true;
                 GameManager.instance.playerT = FindObjectOfType<Player>().transform;
-                FieldOfView fov = GetComponent<FieldOfView>();
-                fov.SetMeshColor(Color.red);
+                //FieldOfView fov = GetComponent<FieldOfView>();
+                //fov.SetMeshColor(Color.red);
             }
         }
     }

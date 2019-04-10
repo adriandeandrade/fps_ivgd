@@ -363,8 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd7b2e86ca0b584bb878d34adb3d6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprintSpeed: 5
-  walkSpeed: 3
+  sprintSpeed: 12
+  walkSpeed: 6
   speedWhileAiming: 1.5
   gravity: 30
   maxVelocityChange: 10
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a509c956341dff84e8e10f3c66d2c647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 150
   healthBar: {fileID: 0}
   useHealthbar: 1
   bulletImpactSound: {fileID: 8300000, guid: 75c56d3c3a1a7a24c99e2928fc198f52, type: 3}

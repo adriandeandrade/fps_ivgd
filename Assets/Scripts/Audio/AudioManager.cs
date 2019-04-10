@@ -9,7 +9,6 @@ public class AudioManager : MonoBehaviour
     public SFX[] sfx;
     public BGM[] bgm;
     
-
     void Awake()
     {
         if (instance == null)
@@ -45,8 +44,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
         music.source.Play();
-
-
     }
     public void PlaySFX(string son)
     {
@@ -57,8 +54,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
         music.source.Play();
-
-
     }
 
 

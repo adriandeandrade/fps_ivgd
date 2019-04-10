@@ -7,10 +7,17 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
+    LevelFader levelFader;
+
+    private void Awake()
+    {
+        levelFader = FindObjectOfType<LevelFader>();
+    }
+
     public void Play()
     {
         // Transition to first scene
-        SceneManager.LoadScene(1);
+        levelFader.FadeToLevel(1);
     }
 
     public void Quit()
