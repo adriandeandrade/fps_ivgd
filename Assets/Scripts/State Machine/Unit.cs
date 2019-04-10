@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour
     public Animator animator;
     public enum InitialState { PATROL, GUARD, ATTACK, SEARCH }
     public InitialState firstState;
+    public bool onlyAttack;
 
     float currentSpeed;
 

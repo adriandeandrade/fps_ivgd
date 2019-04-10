@@ -58,4 +58,14 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void EndGame()
+    {
+        Invoke("End", 1f);
+    }
+
+    private void End()
+    {
+        levelFader.FadeToLevel(3);
+    }
 }

@@ -8,16 +8,20 @@ public class TakeDamage : MonoBehaviour
     [SerializeField] private float maxHealth = 100;
     [SerializeField] private Image healthBar;
     [SerializeField] private bool useHealthbar;
+    [SerializeField] private bool isScientist;
     [SerializeField] private AudioClip bulletImpactSound;
 
     float currentHealth;
     bool isDead = false;
 
+
     AudioSource aSource;
+    LevelFader levelFader;
 
     private void Awake()
     {
         aSource = GetComponent<AudioSource>();
+        levelFader = FindObjectOfType<LevelFader>();
     }
 
     private void Start()
@@ -27,17 +31,28 @@ public class TakeDamage : MonoBehaviour
 
     private void Update()
     {
-        if(useHealthbar)
+        if (isScientist)
+        {
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+                GameManager.instance.EndGame();
+                return;
+            }
+        }
+
+        if (useHealthbar)
         {
             float ratio = currentHealth / maxHealth;
             healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, ratio, 0.1f);
 
-            if(currentHealth <= 0)
+            if (currentHealth <= 0)
             {
                 // Do gameover stuff here.
                 GameManager.instance.GameOver();
             }
-        } else
+        }
+        else
         {
             if (currentHealth <= 0)
             {
@@ -51,7 +66,7 @@ public class TakeDamage : MonoBehaviour
 
                 Animator anim = GetComponentInChildren<Animator>();
 
-                if(anim != null)
+                if (anim != null)
                 {
                     Debug.Log("Playing death");
                     //anim.SetTrigger("Die");
@@ -66,7 +81,7 @@ public class TakeDamage : MonoBehaviour
         currentHealth -= amount;
         aSource.PlayOneShot(bulletImpactSound);
 
-        if(!useHealthbar)
+        if (!useHealthbar)
         {
             if (!GameManager.instance.detected)
             {

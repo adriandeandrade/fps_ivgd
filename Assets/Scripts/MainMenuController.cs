@@ -14,6 +14,11 @@ public class MainMenuController : MonoBehaviour
         levelFader = FindObjectOfType<LevelFader>();
     }
 
+    private void Start()
+    {
+        AudioManager.instance.PlayMusic("Title");
+    }
+
     public void Play()
     {
         // Transition to first scene

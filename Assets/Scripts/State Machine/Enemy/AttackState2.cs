@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : IState
+public class AttackState2 : IState
 {
     float maxDistanceFromPlayer = 15f;
     float waitBeforeMovingTime = 2f;
@@ -16,7 +16,7 @@ public class AttackState : IState
     Unit owner;
     Transform target;
 
-    public AttackState(Unit _owner)
+    public AttackState2(Unit _owner)
     {
         this.owner = _owner; // Register this chase state to its owner.
     }
@@ -30,12 +30,6 @@ public class AttackState : IState
 
     public void Execute()
     {
-        if (!GameManager.instance.detected && !owner.onlyAttack)
-        {
-            owner.stateMachine.ChangeState(new SearchState(this.owner));
-            return;
-        }
-
         float distance = Vector3.Distance(owner.transform.position, target.position);
 
         if (distance <= (maxDistanceFromPlayer - 0.1f))
