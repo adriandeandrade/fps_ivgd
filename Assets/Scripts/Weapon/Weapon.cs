@@ -231,7 +231,7 @@ public class Weapon : MonoBehaviour
                 Vector3 hitPoint = hit.point;
                 GameObject bloodEffect = Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
                 Destroy(bloodEffect, 2f);
-                enemy.ReceiveDamage(10);
+                enemy.ReceiveDamage(gunData.damageAmount);
             }
         }
     }

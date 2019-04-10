@@ -3891,11 +3891,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AK47_no_arms
       objectReference: {fileID: 0}
-    - target: {fileID: 4574018375001678264, guid: a894d6763775c8a4c9cb4b75245bfd94,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4574018375001456024, guid: a894d6763775c8a4c9cb4b75245bfd94,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3950,10 +3945,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1973457005, guid: a894d6763775c8a4c9cb4b75245bfd94, type: 3}
-      propertyPath: isWeapon
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a894d6763775c8a4c9cb4b75245bfd94, type: 3}
@@ -6865,6 +6856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb1256e65ff57349934cb2b112c4ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 0}
   playerT: {fileID: 0}
   beingDetected: 0
   detected: 0

@@ -55,22 +55,16 @@ public class Unit : MonoBehaviour
         switch (stateMachine.CurrentState.GetState())
         {
             case "SearchState":
-                Debug.Log("Animating Search State");
-
                 currentSpeed = Mathf.Clamp01(currentSpeed);
                 animator.SetFloat("SpeedMagnitude", currentSpeed / 2);
                 break;
             case "PatrolState":
                 currentSpeed = Mathf.Clamp01(currentSpeed);
                 animator.SetFloat("SpeedMagnitude", currentSpeed / 2);
-
-                Debug.Log("Animating Patrol State");
                 break;
             case "AttackState":
                 currentSpeed = Mathf.Clamp01(currentSpeed);
                 animator.SetFloat("SpeedMagnitude", currentSpeed);
-
-                Debug.Log("Animating Attack State");
                 break;
         }
     }

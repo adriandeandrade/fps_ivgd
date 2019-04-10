@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     bool gameOver = false;
 
+    LevelFader levelFader;
+
     private void Awake()
     {
         if(instance == null)
@@ -21,11 +24,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        levelFader = FindObjectOfType<LevelFader>();
     }
 
     private void Start()
     {
-       
+        gameOverPanel.SetActive(false);
     }
 
     private void Update()
@@ -36,6 +41,20 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
+        InputManager.instance.HandleMovement = false;
         gameOver = true;
+    }
+
+    public void Retry()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        levelFader.FadeToLevel(currentScene);
+        Debug.Log("RETRIED");
+        //SceneManager.LoadScene(currentScene);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

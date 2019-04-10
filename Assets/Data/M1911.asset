@@ -15,6 +15,7 @@ MonoBehaviour:
   fireType: 1
   weaponType: 1
   magazineCapacity: 9
+  damageAmount: 25
   burstCount: 0
   fireRate: 0.1
   fireRange: 300

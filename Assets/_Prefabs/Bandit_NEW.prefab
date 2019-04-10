@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewAngle: 80
-  viewRadius: 36.64
+  viewRadius: 21.5
   meshResolution: 1
   edgeDstThreshold: 0.5
   edgeResolveIterations: 4

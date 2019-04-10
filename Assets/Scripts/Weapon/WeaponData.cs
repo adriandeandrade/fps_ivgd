@@ -8,6 +8,7 @@ public class WeaponData : ScriptableObject
     public FireTypes fireType;
     public WeaponType weaponType;
     public int magazineCapacity;
+    public int damageAmount;
     public int burstCount;
     public float fireRate;
     public float fireRange;

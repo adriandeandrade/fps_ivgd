@@ -16,7 +16,7 @@ public class Waypoints : MonoBehaviour
         }
     }
 
-    public void OnDrawGizmos()
+    public void OnDrawGizmosSelected()
     {
         foreach (Transform point in points)
         {

@@ -38,17 +38,28 @@ public class PlayerPickup : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, maxInteractDistance, pickupMask))
         {
             PickupItem pickup = hit.collider.GetComponent<PickupItem>();
+            DoorPanel doorPanel = hit.collider.GetComponent<DoorPanel>();
 
-            if(pickup.isWeapon)
+            if(doorPanel)
+            {
+                doorPanel.GoToLastLevel();
+            }
+            else
+            {
+                UpdatePickupUI(pickup.itemName);
+            }
+
+            if (pickup.isWeapon)
             {
                 UpdatePickupUI(pickup.weaponData.weaponName);
 
-                if (Input.GetKeyDown(KeyCode.G))
+                if (Input.GetButtonDown(InputManager.instance.interactButtonName))
                 {
                     player.AddWeapon(pickup.weaponData, pickup.weaponData.weaponArms);
-                    //Destroy(pickup.gameObject);
+                    Destroy(pickup.gameObject);
                 }
-            } else
+            }
+            else
             {
                 UpdatePickupUI(pickup.itemName);
             }

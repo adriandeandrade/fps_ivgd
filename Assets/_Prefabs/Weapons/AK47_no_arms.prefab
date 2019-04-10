@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4574018375003881336}
   - component: {fileID: 1973457006}
   - component: {fileID: 1973457005}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AK47_no_arms
   m_TagString: Pickup
   m_Icon: {fileID: 0}
@@ -105,4 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901d87035cf86ee4f8a1871a70d887e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: 
+  isWeapon: 1
   weaponData: {fileID: 11400000, guid: 394c74eb3ebb8634ca8a0a8842f82654, type: 2}

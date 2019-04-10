@@ -36,6 +36,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] public string reloadButton;
     [SerializeField] public string switchWeaponButtonName;
     [SerializeField] public string cycleGunsInSlotButtonName;
+    [SerializeField] public string interactButtonName;
 
     float horizontal;
     float vertical;

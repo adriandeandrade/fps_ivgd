@@ -66,12 +66,15 @@ public class TakeDamage : MonoBehaviour
         currentHealth -= amount;
         aSource.PlayOneShot(bulletImpactSound);
 
-        if(!GameManager.instance.detected)
+        if(!useHealthbar)
         {
-            GameManager.instance.detected = true;
-            GameManager.instance.playerT = FindObjectOfType<Player>().transform;
-            FieldOfView fov = GetComponent<FieldOfView>();
-            fov.SetMeshColor(Color.red);
+            if (!GameManager.instance.detected)
+            {
+                GameManager.instance.detected = true;
+                GameManager.instance.playerT = FindObjectOfType<Player>().transform;
+                FieldOfView fov = GetComponent<FieldOfView>();
+                fov.SetMeshColor(Color.red);
+            }
         }
     }
 }
