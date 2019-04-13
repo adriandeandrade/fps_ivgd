@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : IState
 {
-    float maxDistanceFromPlayer = 15f;
+    float maxDistanceFromPlayer = 20f;
     float waitBeforeMovingTime = 2f;
     float waitBeforeMovingTimer;
 

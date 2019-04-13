@@ -26,12 +26,15 @@ public class AudioManager : MonoBehaviour
         {
             sound.source = gameObject.AddComponent<AudioSource>();
             sound.source.clip = sound.clip;
+            sound.source.volume = 0.25f;
         }
 
         foreach (BGM music in bgm)
         {
             music.source = gameObject.AddComponent<AudioSource>();
             music.source.clip = music.clip;
+            music.source.volume = 0.25f;
+
         }
     }
 
@@ -56,6 +59,16 @@ public class AudioManager : MonoBehaviour
         music.source.Play();
     }
 
+    public void StopSong(string song)
+    {
+        BGM music = System.Array.Find(bgm, item => item.name == song);
+        if (music == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        music.source.Stop();
+    }
 
 
 

@@ -23,6 +23,7 @@ public class MainMenuController : MonoBehaviour
     {
         // Transition to first scene
         levelFader.FadeToLevel(1);
+        AudioManager.instance.StopSong("Title");
     }
 
     public void Quit()

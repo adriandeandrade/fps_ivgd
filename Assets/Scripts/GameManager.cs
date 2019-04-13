@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         InputManager.instance.HandleMovement = false;
         gameOver = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void Retry()
